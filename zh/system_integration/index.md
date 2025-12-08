@@ -1,0 +1,15 @@
+---
+sidebar_position: 7
+slug: /system_integration
+---
+
+# 系统集成
+
+如果您想使用 Bianbu 源定制自己的系统，下面是一些指南：
+
+- [Bianbu 1.0 ROOTFS制作](bianbu_1.0_rootfs_create.md)
+- [Bianbu 2.0 ROOTFS制作](bianbu_2.0_rootfs_create.md)
+- [Bianbu 2.1/2.2 ROOTFS制作](bianbu_2.1_rootfs_create.md)
+- [单应用 ROOTFS 制作](single_app_rootfs_create.md)
+- [固件制作](./image.md)
+- [UEFI固件与系统镜像制作指南](./uefi_image.md)
