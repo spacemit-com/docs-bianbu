@@ -3,7 +3,7 @@ slug: /
 sidebar_position: 1
 ---
 
-# Overview
+# Introduction
 
 **Bianbu** is an operating system deeply optimized for RISC-V architecture processors, built on the Ubuntu community source code, and provides a system foundation for iterative spatiotemporal AI CPUs. Bianbu provides the following version images for developers and users:
 
