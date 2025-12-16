@@ -12,7 +12,7 @@ sidebar_position: 10
 
 ## 前提条件
 
-### 创建GPG key（已有则跳过）
+### 创建 GPG key（已有则跳过）
 
 安装签名工具，
 
@@ -26,7 +26,7 @@ apt install gpg devscripts
 gpg --gen-key
 ```
 
-最终提示如下，复制密钥ID(pub部分)，之后导出公钥时要用到，
+最终提示如下，复制密钥 ID(pub 部分)，之后导出公钥时要用到，
 
 ```bash
 gpg (GnuPG) 2.2.27; Copyright (C) 2021 Free Software Foundation, Inc.
@@ -66,7 +66,7 @@ sub   rsa3072 2024-11-04 [E] [有效至：2026-11-04]
 
 ### 配置上传地址
 
-添加如下条目到 ~/.dput.cf
+添加如下条目到 `~/.dput.cf`
 
 ```bash
 [bianbu]
@@ -121,7 +121,7 @@ dpkg-buildpackage -sa -uc -us -etest@spacemit.com -mtest@spacemit.com
 - -sa：changes文件总是记录orig压缩包。
 简单起见，可以填写为签名者（刚才创建的GPG key用户）的邮箱。
 
-## 检查changes文件
+## 检查 changes 文件
 
 1. 执行如下命令确保../xx.changes的Distribution字段为experimental，以便后续能入库到正确suite。
 
@@ -203,7 +203,7 @@ apt install xxx
 
 ## FAQ
 
-1. 如何使用binNMU（Binary Non-Maintainer Upload，二进制非维护者上传）？
+### Q1. 如何使用 binNMU（Binary Non-Maintainer Upload，二进制非维护者上传）？
 
 前提条件：已经上传入库过一次源码包。
 

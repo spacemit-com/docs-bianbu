@@ -8,8 +8,8 @@ Bianbu OS 预装了 Python 3，安装第三方 Python 库时，推荐使用正�
 
 在 Bianbu OS中，您可以通过两种方式安装python依赖项：
 
-* 使用apt安装预先配置的系统Python软件包。
-* 创建虚拟环境，使用pip包管理工具安装软件包。
+- 使用apt安装预先配置的系统Python软件包。
+- 创建虚拟环境，使用pip包管理工具安装软件包。
 
 ## 使用apt安装Python包
 
@@ -141,8 +141,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 (myenv) ➜  ~ deactivate
 ```
 
-
-
 ### Python 版本支持
 
 | **Python解释器版本** | **支持情况** |
@@ -152,15 +150,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 强烈建议您使用 Python 3.12 及以上版本的 Python，通常，跟随系统的 Python 版本是较好的做法。
 
-
-
 ### 使用pyenv管理Python 版本
 
 pyenv 是一个非常流行的 Python 版本管理工具，它允许您轻松地安装、管理和切换多个 Python 版本。您可以根据项目需要在不同的 Python 版本之间自由切换，下面介绍如何使用 pyenv 配置多个 Python 版本。
 
 更多信息请参考[pyenv官方教程](https://github.com/pyenv/pyenv)
-
-
 
 #### 安装pyenv
 
@@ -345,7 +339,7 @@ global.extra-index-url='https://git.spacemit.com/api/v4/projects/33/packages/pyp
 
 ## 使用 Thonny 编辑器
 
-可以使用[Thonny](https://thonny.org/)在 Bianbu 上快速编辑 Python 代码。但为了更好的体验，推荐使用 JupyterLab 
+可以使用[Thonny](https://thonny.org/)在 Bianbu 上快速编辑 Python 代码。但为了更好的体验，推荐使用 JupyterLab
 
 安装：
 
@@ -361,8 +355,6 @@ thonny
 
 默认情况下，Thonny 使用系统 Python。但是，您可以通过单击 Thonny 窗口右下角的解释器菜单切换到使用 Python 虚拟环境。可以选择已配置的环境或使用Configure interpreter…创建一个新的虚拟环境​ ​。
 
-
-
 ## 使用 JupyterLab (with vscode)
 
 ### JupyterLab 简介
@@ -372,30 +364,30 @@ thonny
 #### **核心特点**
 
 1. **多文档界面**
-   - 可以同时打开多个 Notebook、终端、文本文件、Markdown、CSV、图片、代码编辑器。
-   - 采用 **标签页和分屏布局**，方便组织工作流。
+   * 可以同时打开多个 Notebook、终端、文本文件、Markdown、CSV、图片、代码编辑器。
+   * 采用 **标签页和分屏布局**，方便组织工作流。
 2. **交互式计算**
-   - 支持多种编程语言（通过 Jupyter 内核，最常见的是 Python）。
-   - 可以直接运行代码块、查看结果（图表、表格、数学公式）。
+   * 支持多种编程语言（通过 Jupyter 内核，最常见的是 Python）。
+   * 可以直接运行代码块、查看结果（图表、表格、数学公式）。
 3. **丰富的可视化支持**
-   - 与 **Matplotlib、Plotly、Bokeh、Altair** 等库无缝集成。
-   - 支持交互式图表和实时更新。
+   * 与 **Matplotlib、Plotly、Bokeh、Altair** 等库无缝集成。
+   * 支持交互式图表和实时更新。
 4. **强大的扩展机制**
-   - 可以安装插件（Extensions），增强功能，比如 Git 集成、代码格式化、调试器等。
+   * 可以安装插件（Extensions），增强功能，比如 Git 集成、代码格式化、调试器等。
 5. **终端与文件管理**
-   - 内置 Linux Shell 终端。
-   - 文件管理器可直接操作服务器文件。
+   * 内置 Linux Shell 终端。
+   * 文件管理器可直接操作服务器文件。
 
 #### **使用场景**
 
-- **数据探索与可视化**：快速查看和分析数据集。
-- **机器学习建模**：训练、调试、可视化模型。
-- **教育与科研**：作为教学工具，支持数学公式 (LaTeX)、交互式演示。
-- **原型开发**：结合代码、文档、图表快速迭代。
+* **数据探索与可视化**：快速查看和分析数据集。
+* **机器学习建模**：训练、调试、可视化模型。
+* **教育与科研**：作为教学工具，支持数学公式 (LaTeX)、交互式演示。
+* **原型开发**：结合代码、文档、图表快速迭代。
 
 ------
 
-### 安装 JupyterLab 
+### 安装 JupyterLab
 
 安装依赖
 
@@ -432,7 +424,7 @@ jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=~/
 
 ![](./static/jupyter2.png)
 
-将 http://127.0.0.1:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c 这一段复制并保存到你的记事本。这里 token 后面的数字会有变化，请复制你自己终端打印的，而不是本文的。
+将 <http://127.0.0.1:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c> 这一段复制并保存到你的记事本。这里 token 后面的数字会有变化，请复制你自己终端打印的，而不是本文的。
 
 新建一个终端，使用 ip addr 命令查看板子 ip 地址
 
@@ -442,11 +434,11 @@ jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=~/
 
 替换刚刚复制的链接里面的 127.0.0.1 为 板子ip (这里是 10.0.91.183)，如下：
 
-http://10.0.91.183:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c
+<http://10.0.91.183:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c>
 
 ### 在浏览器使用 JupyterLab
 
-打开你的 x86 主机上的浏览器，在地址栏粘贴刚刚得到的 http://10.0.91.183:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c 你将看到如下界面：
+打开你的 x86 主机上的浏览器，在地址栏粘贴刚刚得到的 <http://10.0.91.183:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c> 你将看到如下界面：
 
 ![](./static/jupyter3.png)
 
@@ -483,8 +475,6 @@ http://10.0.91.183:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d3680
 ![](./static/vscode-remote5.png)
 
 当你在虚拟环境中安装了新的包时，点击重启就可以刷新环境。
-
-
 
 ## 从 Python 使用 GPIO
 
