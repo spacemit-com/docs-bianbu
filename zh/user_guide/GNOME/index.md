@@ -2,7 +2,6 @@
 sidebar_position: 1
 ---
 
-
 # GNOME
 
 以下是一些用户指南：
