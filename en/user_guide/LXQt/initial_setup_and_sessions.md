@@ -2,96 +2,135 @@
 sidebar_position: 2
 ---
 
-# 首次启动与会话
+# Initial Startup and Sessions
 
-本章节介绍系统首次启动后的基本引导与会话选择。在开机引导阶段完成语言、位置、键盘和用户设置，完成开机引导后即可重启进入登录界面。
+This section explains what happens the first time you power on the system and how user sessions work. The startup wizard guides you through basic configuration, including language, location, keyboard layout, and user account setup. After completing the wizard, the system reboots and displays the login screen.
 
-## 开机引导（初始化设置）
+## Startup Wizard (Initial Setup)
 
-### 语言设置
+The startup wizard runs automatically on first boot and walks you through the required configuration steps in order.
 
-![语言设置页面](static/welcome.png)
+### Step 1: Language Settings
 
-开机引导应用默认以简体中文显示，可以在 **语言设置** 页面切换语言。打开 **语言列表**，可以看到当前可供选择的语言（目前仅支持 **简体中文** 和 **American English**）。
+![Language settings page](static/welcome.png)
 
-![语言列表](static/welcome-language.png)
+The startup wizard is displayed in **Simplified Chinese** by default. You can change the language on the **Language Settings** page.
 
-选择语言后开机引导应用会重新加载页面，并使用相应的语言。此外，在 **欢迎** 页面选择的语言后续会应用到系统语言中。
+Open the **Language List** to see the available options. Currently, the system supports:
 
-![英文界面](static/welcome-English.png)
+- **Simplified Chinese**
+- **American English**
 
-### 位置选择
+![Language list](static/welcome-language.png)
 
-![位置选择](static/locale.png)
+After you select a language, the wizard reloads and immediately applies the new language. The selected language will also be used as the system language after setup is complete.
 
-在 **位置选择** 页面选择你所在的地区与城市，系统会根据当前网络所在地自动匹配本地时区（如果未连接网络则地区默认为 **Asia/Shanghai** ），并影响时间/数字/货币等区域格式。确认选择无误后继续。
+![English interface](static/welcome-English.png)
 
-![位置下拉列表](static/locale-select.png)
+### Step 2: Location and Time Zone
 
-除了在 **区域列表** 中选择所在地区外，还可以在 **时区地图** 中选择当前所在地区。
+![Location selection](static/locale.png)
 
-![点击时区地图](static/locale-click.png)
+On the **Location Selection** page, choose your region and city.
 
-### 键盘选择
+- If the system is connected to the network, the time zone is detected automatically.
+- If no network is available, the default region is **Asia/Shanghai**.
 
-![键盘选择](static/keyboard.png)
+The selected location affects regional formats such as **time, numbers, and currency**.
 
-在 **键盘选择** 页面选择与物理键盘一致的布局，默认会使用当前所选语言的默认键盘。若需要布局变体可以展开键盘列表来选择。
+![Location dropdown list](static/locale-select.png)
 
-![键盘选择](static/keyboard-select.png)
+You can select your location in two ways:
 
-### 用户信息
+- Choose from the **Region List**
+- Click directly on the **Time Zone Map**
 
-![用户信息](static/user.png)
+![Clicking the time zone map](static/locale-click.png)
 
-在 **用户信息** 页面填写 **姓名/用户名/计算机名称/密码** 时，请注意核对信息是否正确。
+### Step 3: Keyboard Layout
 
-![信息无误](static/user-filled.png)
+![Keyboard selection](static/keyboard.png)
 
-用户名建议仅用小写字母与数字，密码应具备足够强度（至少满足长度≥6）当用户信息填写完毕且符合规范时，才能进行下一步。
+Select a keyboard layout that matches your physical keyboard.
 
-![显示密码](static/user-showpwd.png)
+- By default, the system uses the standard layout for the selected language.
+- If you need a specific variant, expand the keyboard list and choose the appropriate option.
 
-可临时 **显示密码** 以确认输入无误。
+![Keyboard layout selection](static/keyboard-select.png)
 
-### 将配置写入系统
+### Step 4: User Account Information
 
-![确认弹窗](static/sure.png)
+![User information](static/user.png)
 
-完善 **用户信息** 后的下一步就会对系统配置进行读写且无法中断，请慎重选择是否继续。
+On the **User Information** page, enter the following details:
 
-![配置写入](static/installing.png)
+- **Full Name**
+- **Username**
+- **Computer Name**
+- **Password**
 
-系统开始写入配置与准备环境，请保持电源连接，避免中断导致配置不完整。
+Please review all information carefully before continuing.
 
-## 完成开机引导
+![Completed user information](static/user-filled.png)
 
-![完成](static/done.png)
+**Recommendations:**
 
-配置完成后，可选择 **重启系统** ，到这里就完成了以下关键配置，重启后将按所选项生效：
+- Use only lowercase letters and numbers for the username.
+- The password must be at least **6 characters** long.
 
-- 语言设置：确定系统界面语言（如 **简体中文** 或 **American English** ），影响系统与应用默认语言。
-- 位置/时区：选择地区与城市，**自动匹配** 本地时区，影响 **时间/数字/货币** 格式。
-- 键盘布局：选择与物理键盘一致的布局/变体，确保后续输入映射正确。
-- 用户信息：创建用户名、计算机名称与密码，并通过规范校验后继续下一步。
-- 写入确认：通过确认弹窗核对设置后开始 **写入** ，完成后进入结束页提示重启。
+You can proceed only after all fields pass validation.
 
-# 用户会话
+![Show password](static/user-showpwd.png)
 
-![登录页面](static/login-page.jpg)
+Use **Show Password** to confirm that your password is entered correctly.
 
-重启后系统将进入登录界面。根据刚才创建的用户名及密码登录桌面。每个用户在首次登录成功后都会需要短暂的时间来加载系统设置，请耐心等待。
+### Step 5: Apply Configuration
 
-![操作按钮](static/action-buttons.jpg)
+![Confirmation dialog](static/sure.png)
 
-此外，登录界面还包含以下功能：**休眠、重启、关机和登录指定用户**。其中，休眠、重启和关机通过点击对应按钮即可完成。
+Before applying the settings, the system displays a confirmation dialog. Once you continue, the configuration process **cannot be interrupted**.
 
-## 登录指定用户
+![Applying configuration](static/installing.png)
 
-![头像切换](static/switch-user-avatar.jpg)
+The system writes the configuration and prepares the environment. Keep the device powered on to avoid incomplete setup.
 
-如果当前系统中存在多个可登录账户，则会在屏幕中间显示多个用户头像，点击不同的 **头像** 会切换到对应的用户，可以通过用户名加以区分。利用头像切换到指定用户，输入该用户的密码即可登录。
+## Completing the Setup
 
-![用户切换页面](static/switch-user-page.jpg)
+![Completed](static/done.png)
 
-除了使用头像切换用户，系统也支持直接 **指定用户名** 进行登录，点击切换用户按钮后会进入指定用户名登录页面。在相应输入框中输入正确的用户名和密码即可登录。
+When the setup is finished, select **Restart System**. After reboot, the following settings take effect:
+
+- **Language**: System and application interface language
+- **Location / Time Zone**: Regional settings for time, numbers, and currency
+- **Keyboard Layout**: Correct input mapping for your keyboard
+- **User Account**: Created user account and computer name
+
+## User Sessions
+
+![Login screen](static/login-page.jpg)
+
+After the system restarts, the login screen appears. Log in using the username and password created during setup.
+
+On the first login, the system may take a short time to initialize user-specific settings. This is normal.
+
+![Action buttons](static/action-buttons.jpg)
+
+The login screen provides the following actions:
+
+- **Suspend**
+- **Restart**
+- **Power Off**
+- **Switch User**
+
+Click the corresponding button to perform the desired action.
+
+### Logging In as a Specific User
+
+![Switch user avatar](static/switch-user-avatar.jpg)
+
+If multiple user accounts exist, multiple user avatars are shown. Click an avatar to select a user, then enter the corresponding password.
+
+![Switch user page](static/switch-user-page.jpg)
+
+You can also log in by manually specifying a username. Select **Switch User**, then enter the username and password on the login page.
+
