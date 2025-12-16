@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1.2
+sidebar_position: 2
 ---
 
-# Image
+# Images
 
 Currently, Bianbu provides two formats of images:
 

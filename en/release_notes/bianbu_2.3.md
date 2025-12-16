@@ -19,8 +19,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - This source provides packages for all future 2.3.x versions (e.g., 2.3.1), which are hosted in `bianbu-v2.3-updates`.  
 - To download source packages, modify `Types: deb` to `Types: deb deb-src`.
 
-
-## V2.3.0
+## v2.3.0
 
 **Release Date:** 2025-12-15
 
