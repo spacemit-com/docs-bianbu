@@ -123,7 +123,7 @@ Docker ce installation can refer to [https://docs.docker.com/engine/install/](ht
    export REPO="archive.spacemit.com/bianbu"
    ```
 
-   [Click to view 3.0 version release notes](../release_notes/bianbu_3.0/bianbu_gnome_3.0.md)
+   [Click to view 3.0 version release notes](../release_notes/history/bianbu_3.0.md)
 
 2. Configure bianbu.sources
 

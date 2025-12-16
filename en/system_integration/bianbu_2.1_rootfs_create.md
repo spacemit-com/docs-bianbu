@@ -137,9 +137,9 @@ For docker ce installation, refer to [https://docs.docker.com/engine/install/](h
    export REPO="archive.spacemit.com/bianbu"
    ```
 
-   [Click to view v2.1 release notes](../release_notes/bianbu_2.1.md)
+   [Click to view v2.1 release notes](../release_notes/history/bianbu_2.1.md)
 
-   [Click to view v2.2 release notes](../release_notes/bianbu_2.2/bianbu_gnome_2.2.md)
+   [Click to view v2.2 release notes](../release_notes/bianbu_2.2.md)
 
 2. **Configure `sources.sources`**
 

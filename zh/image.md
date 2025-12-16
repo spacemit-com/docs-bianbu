@@ -20,7 +20,7 @@ sidebar_position: 2
 
 - GNOME: [镜像下载](https://archive.spacemit.com/image/k1/version/bianbu/)
 
-- LXQt: [镜像下载](https://archive.spacemit.com/image/k1/version/bianbu-computer/)
+- LXQt: [镜像下载](https://archive.spacemit.com/image/k1/version/bianbu/v2.3/)
 
 - Minimal: [镜像下载](https://archive.spacemit.com/image/k1/version/bianbu/)
 
