@@ -124,7 +124,7 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
    export VERSION="v2.0.4"
    ```
 
-   [点击查看最新VERSION](../release_notes/bianbu_2.0.md)
+   [点击查看最新VERSION](../release_notes/history/bianbu_2.0.md)
 
 2. 配置 bianbu.sources
 
