@@ -2,11 +2,11 @@
 sidebar_position: 3
 ---
 
-# Bianbu 2.2 Release Notes
+# Bianbu V2.2 Release Notes
 
 Built from **Ubuntu 24.04.1** sources.
 
-Bianbu 2.2 sources:
+Bianbu V2.2 sources:
 
 ```
 Types: deb
@@ -19,7 +19,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - This source provides packages for all future 2.2.x versions (e.g., 2.2.1), which are hosted in `bianbu-v2.2-updates`.  
 - To download source packages, modify `Types: deb` to `Types: deb deb-src`.
 
-## v2.2.1
+## V2.2.1
 
 **Release Date:** August 16, 2025
 
@@ -29,7 +29,7 @@ Corresponding **BSP** version: [v2.2.7](https://sdk.spacemit.com/release_notes/b
 
 - Added support for the Lichee Pi 3A board
 
-## v2.2
+## V2.2
 
 **Release Date:** 2025-5-9
 

@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Bianbu 2.0更新说明 [已停服]
+# Bianbu V2.0更新说明 [已停服]
 
 Bianbu 2.0 于 2025年7月31日 停止维护，推荐使用 2.2 或后续版本，如有疑问，请联系我们。
 
@@ -21,7 +21,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - `<version>`要替换成版本号，例如 `v2.0.4`。
 - 如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
 
-## v2.0.4
+## V2.0.4
 
 **发布日期：** 2024-12-11
 
@@ -41,7 +41,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - 支持 GRUB
 - 支持 Fcitx5 （默认输入法）
 
-## v2.0.2
+## V2.0.2
 
 **发布日期：** 2024-11-11
 
@@ -54,7 +54,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - 修复 GDB vector 调试相关问题
 - 修复 mutter 内外置显卡兼容性问题
 
-## v2.0.1
+## V2.0.1
 
 发布日期：2024-10-28
 
@@ -64,7 +64,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 - 更新 BSP 相关组件
 
-## v2.0
+## V2.0
 
 **发布日期：** 2024-10-22
 
@@ -78,7 +78,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - GCC 14 升级到 14.2
 - 更新 `img-gpu-powervr` ，修复 `gnome-shell` 编译报错的问题
 
-## v2.0rc2
+## V2.0rc2
 
 **发布日期：** 2024-9-30
 
@@ -90,7 +90,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - 修复 Chromium Cookie 失效的问题
 - 更新 box64，支持 RVV，支持运行 WPS Office
 
-## v2.0rc1
+## V2.0rc1
 
 **发布日期：** 2024-9-7
 
@@ -103,7 +103,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - 支持 apport
 - gnome-initial-setup支持设置hostname
 
-## v2.0beta2
+## V2.0beta2
 
 **发布日期：** 2024-9-2
 

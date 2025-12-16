@@ -2,13 +2,13 @@
 sidebar_position: 2
 ---
 
-# Bianbu 2.0 Release Notes [End of Life]
+# Bianbu V2.0 Release Notes [End of Life]
 
-Bianbu 2.0 will reach end of maintenance on July 31, 2025. We recommend using version 2.2 or later. If you have any questions, please contact us.
+Bianbu V2.0 will reach end of maintenance on July 31, 2025. We recommend using version 2.2 or later. If you have any questions, please contact us.
 
 Build from Ubuntu **24.04** sources.
 
-Bianbu 2.0 source：
+Bianbu V2.0 source：
 
 ```
 Types: deb
@@ -21,7 +21,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - Replace `<version>` with the actual version number (e.g., `v2.0.4`).
 - To download source packages, modify `Types: deb` to Types: `deb deb-src`.
 
-## v2.0.4
+## V2.0.4
 
 **Release Date:** 2024-12-11
 
@@ -41,7 +41,7 @@ The corresponding **Buildroot version:** [v2.0.4](https://sdk.spacemit.com/en/re
 - Added support for GRUB
 - Added support for Fcitx5 (default input method)
 
-## v2.0.2
+## V2.0.2
 
 **Release Date:** 2024-11-11
 
@@ -54,7 +54,7 @@ The corresponding **Buildroot version:**: [v2.0.2](https://sdk.spacemit.com/en/r
 - Fixed GDB vector debugging issues
 - Fixed mutter compatibility issues with internal and external graphics cards
 
-## v2.0.1
+## V2.0.1
 
 **Release Date:** 2024-10-28
 
@@ -64,7 +64,7 @@ The corresponding **Buildroot version:** [v2.0.1](https://sdk.spacemit.com/en/re
 
 - Update BSP related components
 
-## v2.0
+## V2.0
 
 **Release Date:** 2024-10-22
 
@@ -78,7 +78,7 @@ The corresponding **Buildroot version:** [v2.0](https://sdk.spacemit.com/en/rele
 - Upgraded GCC 14 to 14.2
 - Updated `img-gpu-powervr` to fix the `gnome-shell` compilation error
 
-## v2.0rc2
+## V2.0rc2
 
 **Release Date:** 2024-9-30
 
@@ -90,7 +90,7 @@ The corresponding **Buildroot version:** [v2.0rc7](https://sdk.spacemit.com/en/r
 - Fixed the issue of Chromium cookies becoming invalid
 - Updated Box64 to support RVV, and WPS Office is supported
 
-## v2.0rc1
+## V2.0rc1
 
 **Release Date:** 2024-9-7
 
@@ -103,7 +103,7 @@ The corresponding **Buildroot version:** [v2.0rc6](https://sdk.spacemit.com/en/r
 - Added support for `apport`
 - `gnome-initial-setup` now supports hostname configuration
 
-## v2.0beta2
+## V2.0beta2
 
 **Release Date:** 2024-9-2
 

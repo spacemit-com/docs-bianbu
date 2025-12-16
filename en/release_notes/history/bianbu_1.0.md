@@ -2,18 +2,18 @@
 sidebar_position: 1
 ---
 
-# Bianbu 1.0 Release Notes [End of Life]
+# Bianbu V1.0 Release Notes [End of Life]
 
-## Bianbu 1.0 End of Life Announcement
+## Bianbu V1.0 End of Life Announcement
 
 SpacemiT **Bianbu v1.0**, which was built on **Ubuntu 23.10**, is no longer supported or updated by the Ubuntu community. SpacemiT has now released **Bianbu v2.0** (currently at version v2.0.4), which is based on **Ubuntu 24.04** and includes deep optimizations for RISC-V. Please note that Bianbu V1.0 is no longer maintained and has reached its **End of Life (EOL)**.
 
-**Bianbu 1.0 End of Life (EOL) Time: 2024/12/31**
+**Bianbu V1.0 End of Life (EOL) Time: 2024/12/31**
 
 Please refer to the document for the Bianbu v2.0 upgrade：
 [user_guide-->upgrade](https://bianbu.spacemit.com/en/user_guide/upgrade)
 
-## v1.0 release note
+## V1.0 release note
 
 **Release Date:** 2024-5-30
 
@@ -65,7 +65,7 @@ The corresponding **Buildroot version:** [v1.0](https://sdk.spacemit.com/en/rele
 
 - Unable to wake up after suspend for a long time
 
-## v1.0.3
+## V1.0.3
 
 **Release Date:** 2024-6-19
 
@@ -78,7 +78,7 @@ The corresponding **Buildroot version:** [v1.0.3](https://sdk.spacemit.com/en/re
 - Fixed the crash of the properties dialog box in the file browser
 - Fixed the issue of repeated Chinese character input in Chromium
 
-## v1.0.5
+## V1.0.5
 
 **Release Date:** 2024-6-26
 
@@ -89,31 +89,31 @@ The corresponding **Buildroot version:** [v1.0.5](https://sdk.spacemit.com/en/re
 - Fixed the issue of LibreOffice crashing with a low probability when opening Word or Excel files or saving files
 - Fixed the issue of cheese becoming unresponsive after the system wakes up from suspend
 
-## v1.0.7
+## V1.0.7
 
 **Release Date:** 2024-7-11
 
 The corresponding **Buildroot version:** [v1.0.7](https://sdk.spacemit.com/en/release_notes/bl-v1.0.y#v107-release-note)
 
-## v1.0.8
+## V1.0.8
 
 **Release Date:** 2024-7-16
 
 The corresponding **Buildroot version:** [v1.0.8](https://sdk.spacemit.com/en/release_notes/bl-v1.0.y#v108-release-note)
 
-## v1.0.9
+## V1.0.9
 
 **Release Date:** 2024-7-20
 
 The corresponding **Buildroot version:** [v1.0.9](https://sdk.spacemit.com/en/release_notes/bl-v1.0.y#v109-release-note)
 
-## v1.0.11
+## V1.0.11
 
 **Release Date:** 2024-8-1
 
 The corresponding **Buildroot version:** [v1.0.11](https://sdk.spacemit.com/en/release_notes/bl-v1.0.y#v1011-release-note)
 
-## v1.0.12
+## V1.0.12
 
 **Release Date:** 2024-8-2
 
@@ -123,7 +123,7 @@ The corresponding **Buildroot version:** [v1.0.12](https://sdk.spacemit.com/en/r
 
 - Fixed object detection and pose tracking startup failed issue
 
-## v1.0.13
+## V1.0.13
 
 **Release Date:** 2024-8-16
 
@@ -137,7 +137,7 @@ The corresponding **Buildroot version:** [v1.0.13](https://sdk.spacemit.com/en/r
 - Added the universe component
 - Fixed issues with incorrect version numbers and repeated online upgrades
 
-## v1.0.14
+## V1.0.14
 
 **Release Date:** 2024-8-31
 
@@ -148,7 +148,7 @@ The corresponding **Buildroot version:** [v1.0.14](https://sdk.spacemit.com/en/r
 - Fixed login issue over serial console when HDMI (configured as primary display) is disconnected
 - Fix ssh unsupport compress issue
 
-## v1.0.15
+## V1.0.15
 
 **Release Date:** 2024-9-7
 

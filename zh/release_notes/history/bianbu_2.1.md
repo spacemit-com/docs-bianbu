@@ -2,13 +2,13 @@
 sidebar_position: 3
 ---
 
-# Bianbu 2.1更新说明 [已停服]
+# Bianbu V2.1 更新说明 [已停服]
 
-Buildroot 2.1 于 2025年7月31日 停止维护，推荐使用 2.2 或后续版本，如有疑问，请联系我们。
+Buildroot V2.1 于 2025年7月31日 停止维护，推荐使用 V2.2 或后续版本，如有疑问，请联系我们。
 
 基于 **Ubuntu 24.04.1** 源码构建。
 
-Bianbu 2.1源：
+Bianbu V2.1 源：
 
 ```
 Types: deb
@@ -21,7 +21,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - 使用此源即可安装到后续的2.1.x（如2.1.1）发布的包，其存放在 `bianbu-v2.1-updates`。
 - 如需下载源码，请将 `Types: deb` 改成 `Types: deb deb-src` 。
 
-## v2.1.1
+## V2.1.1
 
 **发布日期：** 2025-3-13
 
@@ -34,7 +34,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - **openwebui**：支持deepseek
 - **spacemit-ollama-toolkit**：支持deepseek
 
-## v2.1
+## V2.1
 
 **发布日期：** 2025-2-11
 

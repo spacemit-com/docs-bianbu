@@ -1,14 +1,14 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Bianbu 2.1 Release Notes [End of Life]
+# Bianbu V2.1 Release Notes [End of Life]
 
-Buildroot 2.1 will reach end of maintenance on July 31, 2025. We recommend using version 2.2 or later. If you have any questions, please contact us.
+Buildroot V2.1 will reach end of maintenance on July 31, 2025. We recommend using version 2.2 or later. If you have any questions, please contact us.
 
 Build from **Ubuntu 24.04.1** sources.
 
-Bianbu 2.1 source:
+Bianbu V2.1 source:
 
 ```
 Types: deb
@@ -21,7 +21,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - This source provides packages for all future 2.1.x versions (e.g., 2.1.1), which are hosted in `bianbu-v2.1-updates`.  
 - To download source packages, modify `Types: deb` to `Types: deb deb-src`.
 
-## v2.1.1
+## V2.1.1
 
 **Release Date:** 2025-3-13
 
@@ -35,7 +35,7 @@ The corresponding **Buildroot version:** [v2.1](https://sdk.spacemit.com/en/rele
 - **spacemit-ollama-toolkit**: Added support for deepseek
 
 
-## v2.1
+## V2.1
 
 **Release Date:** 2025-2-11
 

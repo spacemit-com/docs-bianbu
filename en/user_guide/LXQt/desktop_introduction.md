@@ -32,7 +32,7 @@ Bianbu LXQt 桌面是基于 Labwc 合成器及 QT 开发的桌面环境。致力
 
 ## 性能参数对比
 
-**Bianbu LXQt 2.3.0 与 Bianbu GNOME 2.2 性能对比 (基于 K1 MUSE Book)**
+**Bianbu LXQt V2.3.0 与 Bianbu GNOME V2.2 性能对比 (基于 K1 MUSE Book)**
 
 | 测试类别     | 测试项                         | Bianbu GNOME V2.2 | Bianbu LXQt V2.3.0 | 性能提升倍数 |
 | :----------- | :----------------------------- | :--------------------------- | :--------------------------- | :------- |
