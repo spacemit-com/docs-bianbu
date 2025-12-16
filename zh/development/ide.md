@@ -6,7 +6,7 @@ sidebar_position: 5
 
 ## VScodium
 
-[VSCodium](https://vscodium.com/)是 VS Code 的开源版本，可以从 Bianbu 源（仅限 2.0.2 之后的版本）安装。
+[VSCodium](https://vscodium.com/) 是 VS Code 的开源版本，可以从 Bianbu 源（仅限 2.0.2 之后的版本）安装。
 
 ```shell
 sudo apt-get update
@@ -60,7 +60,7 @@ sudo tar xf VSCodium-linux-riscv64-1.94.2.24286.tar.gz -C /opt/vscodium
 
 ### VS Code in the browser
 
-部署[code-server](https://github.com/coder/code-server)远程VS Code网页，在浏览器上写代码。
+部署 [code-server](https://github.com/coder/code-server) 远程 VS Code 网页，在浏览器上写代码。
 
 在Bianbu v2.0rc1或更新版本上安装`code-server`：
 
@@ -93,7 +93,7 @@ info  Session server listening on ~/.local/share/code-server/code-server-ipc.soc
 
 VSCodium 的插件 [Open Remote - SSH](https://open-vsx.org/extension/jeanp413/open-remote-ssh) 支持远程开发。
 
-1. 安装VSCodium，参考[官方指南](https://vscodium.com/#install)。
-2. 打开VSCodium，进入扩展页面，搜索`Open Remote - SSH`，然后安装。
-3. 打开远程资源管理器，即可连接SSH Target。
+1. 安装 VSCodium，参考[官方指南](https://vscodium.com/#install)。
+2. 打开 VSCodium，进入扩展页面，搜索 `Open Remote - SSH`，然后安装。
+3. 打开远程资源管理器，即可连接 SSH Target。
 4. 连接成功，即可打开远程的文件夹和文件。

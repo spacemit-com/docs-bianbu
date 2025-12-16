@@ -15,3 +15,5 @@ Below are some development guide:
 - [Coredump](coredump.md)
 - [Perf Usage Note](perf.md)
 - [AMD R600 Graphics Card Usage Guide](r600.md)
+- [read-only-rootfs-config Usage Instructions](system-restore.md)
+- [Package Hosting Service](dak.md)
