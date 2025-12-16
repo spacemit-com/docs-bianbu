@@ -32,7 +32,7 @@ sidebar_position: 9
 
 ## 更新
 
-### Bianbu 1.0 apt update时报错
+### Bianbu 1.0 apt update 时报错
 
 `invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key`
 

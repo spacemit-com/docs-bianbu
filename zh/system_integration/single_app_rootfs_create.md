@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # 单应用 ROOTFS 制作
 
-本文档介绍如何在 Bianbu minimal 基础上定制一个基于 labwc 显示服务器运行单应用的 rootfs。
+本文档介绍如何在 Bianbu 命令行版本基础上定制一个基于 labwc 显示服务器运行单应用的 rootfs。
 
 ## 环境要求和基础 ROOTFS 制作
 

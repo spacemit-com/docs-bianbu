@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Bianbu 1.0 ROOTFS制作
+# Bianbu 1.0 ROOTFS 制作
 
 ## 环境要求
 

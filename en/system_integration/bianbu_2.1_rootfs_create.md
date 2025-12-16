@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Bianbu 2.1/2.2 ROOTFS Creation
