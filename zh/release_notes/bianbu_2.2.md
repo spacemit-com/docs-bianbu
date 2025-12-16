@@ -2,11 +2,11 @@
 sidebar_position: 3
 ---
 
-# Bianbu 2.2更新说明
+# Bianbu V2.2 更新说明
 
 基于 **Ubuntu 24.04.1** 源码构建。
 
-Bianbu 2.2源：
+Bianbu V2.2 源：
 
 ```
 Types: deb
@@ -16,10 +16,10 @@ Components: main universe restricted multiverse
 Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 ```
 
-- 使用此源即可安装到后续的2.2.x（如2.2.1）发布的包，其存放在 `bianbu-v2.2-updates`。
+- 使用此源即可安装到后续的 V2.2.x（如 V2.2.1）发布的包，其存放在 `bianbu-v2.2-updates`。
 - 如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
 
-## v2.2.1
+## V2.2.1
 
 **发布日期：** 2025-8-16
 
@@ -29,7 +29,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 - 支持Lichee PI 3A开发板
 
-## v2.2
+## V2.2
 
 **发布日期：** 2025-5-9
 
@@ -37,7 +37,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 ### LXQt桌面组件主要更新
 
-**1. 新镜像 - bianbu lxqt桌面版本镜像**
+**1. 新镜像 - bianbu lxqt 桌面版本镜像**
 
 - 基于 `lxqt 2.1.0`
 - 默认使用 Wayland 协议
@@ -48,11 +48,11 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
   - Ctrl + Alt + ←/→ 切换左右工作区
   - logo + F1~F4 跳转到指定工作区
 
-### GNOME桌面组件主要更新
+### GNOME 桌面组件主要更新
 
 该版本GNOME桌面组件暂无更新
 
-### Bianbu OS基础组件主要更新
+### Bianbu OS 基础组件主要更新
 
 **1. 显示**
 

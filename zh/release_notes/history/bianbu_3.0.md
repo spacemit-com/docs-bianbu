@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Bianbu 3.0更新说明
+# Bianbu V3.0 更新说明
 
 基于 **Ubuntu 25.04** 源码构建。
 
@@ -16,10 +16,10 @@ Components: main universe restricted multiverse
 Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 ```
 
-- 使用此源即可安装到后续的3.0.x（如3.0.1）发布的包，其存放在 `bianbu-v3.0-updates`。
+- 使用此源即可安装到后续的 V3.0.x（如 V3.0.1）发布的包，其存放在 `bianbu-v3.0-updates`。
 - 如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
 
-## v3.0.1
+## V3.0.1
 
 **发布日期：** 2025-8-16
 
@@ -29,13 +29,13 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 - 支持Lichee PI 3A开发板
 
-## v3.0
+## V3.0
 
 **发布日期：** 2025-7-31
 
 对应的 **BSP** 版本：[v2.2.6](https://sdk.spacemit.com/release_notes/bl-v2.2.y)
 
-### Bianbu OS基础组件主要更新
+### Bianbu OS 基础组件主要更新
 
 **1. 工具链**
 
