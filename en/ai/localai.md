@@ -1,9 +1,11 @@
 ---
 sidebar_position: 6
 ---
+
 # LocalAI
 
 ## Introduction
+
 LocalAI is a complete AI stack for running AI models locally. Designed to be simple, efficient, and accessible, it provides an alternative to OpenAI's API. Users can run large language models (LLMs), image generation, speech transcription, and other AI tasks on consumer-grade hardware (including CPU environments) while maintaining data privacy and security.
 
 This document details how to compile, install, and use LocalAI from source on our Bianbu platform, along with adding custom inference backends.
@@ -11,6 +13,7 @@ This document details how to compile, install, and use LocalAI from source on ou
 ## Compilation and Installation Steps
 
 ### Install System Dependencies
+
 ```bash
 sudo apt update
 sudo apt install cmake golang libgrpc-dev make protobuf-compiler-grpc python3-grpc-tools
@@ -50,7 +53,9 @@ sudo apt install libgrpc++-dev
 ```
 
 ### Compile LocalAI
+
 Download our source code and compile:
+
 ```bash
 wget https://archive.spacemit.com/spacemit-ai/localai/localai.tar.gz
 tar xvzf localai.tar.gz
@@ -71,8 +76,11 @@ make build
 ```
 
 ## Adding Custom Inference Backends
+
 ### Add RISC-V Accelerated llama.cpp Backend
+
 Our modify llama.cpp with RISC-V acceleration and package it as a grpc-server binary. Deploy using:
+
 ```bash
 cd backend/cpp/spacemit-llama-cpp
 bash install.sh
@@ -80,24 +88,27 @@ bash install.sh
 
 The script downloads the RISC-V accelerated llama-cpp-grpc-server binary and quantized models, configures directories, and generates config files.
 Run **./local-ai --debug** from the project root to start LocalAI.
-Test via browser at http://localhost:8080/chat/.
+Test via browser at <http://localhost:8080/chat/>.
 
 If encountering shared library error
 
     stderr llama-cpp-riscv-spacemit: error while loading shared libraries: libabsl_synchronization.so.20220623: No such file.
 
 Fix with:
+
 ```bash
 sudo apt install libabsl-dev
 sudo ln -s /usr/lib/riscv64-linux-gnu/libabsl_synchronization.so /usr/lib/riscv64-linux-gnu/libabsl_synchronization.so.20220623
 ```
 
 To use other LLM models with our accelerated backend, you can
-- Download models from https://archive.spacemit.com/spacemit-ai/gguf/
-- Get corresponding modelfiles from https://archive.spacemit.com/spacemit-ai/modelfile/
+
+- Download models from <https://archive.spacemit.com/spacemit-ai/gguf/>
+- Get corresponding modelfiles from <https://archive.spacemit.com/spacemit-ai/modelfile/>
 - Create a new config file (e.g., models/spacemit-qwen2.5-0.5b-instruct.yaml), adjusting model name, stop words, and template based on the modelfile.
 
 ### Add RISC-V Accelerated ASR Backend
+
 ```bash
 cd backend/cpp/spacemit-asr-cpp
 bash build.sh
@@ -107,6 +118,7 @@ cd ../../../
 ```
 
 Test with:
+
 ```bash
 # Prepare audio file test.wav
 curl -X POST http://localhost:8080/v1/audio/transcriptions \
@@ -116,6 +128,7 @@ curl -X POST http://localhost:8080/v1/audio/transcriptions \
 ```
 
 ### Add C++ TTS Backend
+
 ```bash
 cd backend/cpp/matcha-tts-cpp
 bash build.sh
@@ -125,6 +138,7 @@ cd ../../../
 ```
 
 Test with:
+
 ```bash
 curl -X POST "http://localhost:8080/tts" \
     -H "Content-Type: application/json" \
