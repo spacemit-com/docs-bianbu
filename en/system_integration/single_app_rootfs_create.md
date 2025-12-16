@@ -1,10 +1,10 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # Single Application ROOTFS Creation
 
-This document outlines the steps to customize a ROOTFS based on **Bianbu Minimal** for running a single application using the **labwc** display server.
+This document outlines the steps to customize a ROOTFS based on **Bianbu Minimal Version** for running a single application using the **labwc** display server.
 
 
 ## Environmental requirements and basic ROOTFS creation

@@ -8,7 +8,6 @@ sidebar_position: 6
 本文基于 **Bianbu Minimal 2.2** 环境，适用于 MUSE Pi Pro 板卡。  
 教你如何一步一步制作基于EDK2的 RISC-V UEFI 固件，并制作可以刷机的系统镜像（支持 Titan 固件包 + SD 卡镜像）。
 
-
 ## 文档内容概览
 
 本指南共包含以下部分：
@@ -54,6 +53,7 @@ sidebar_position: 6
 在制作UEFI系统镜像之前，我们需要先制作UEFI固件。这是因为UEFI固件是系统启动的基础组件，它负责硬件初始化和引导加载程序的启动。传统的U-Boot启动方式需要特定的U-Boot镜像，而UEFI启动方式则需要符合UEFI标准的固件镜像。通过先制作UEFI固件（edk2.itb），我们才能替换掉传统的U-Boot镜像，从而实现UEFI标准的启动流程。
 
 1. **安装编译依赖**
+
    ```shell
    apt install -y git sudo make gcc g++ uuid-dev python3 u-boot-tools 2to3 brotli
    ```
@@ -137,16 +137,16 @@ sidebar_position: 6
    以下是一个传输示例：
 
    - 首先，在Muse Pi Pro 上执行以下命令获取制作ESP分区的用户名以及系统的IP地址。
-   
+
      ```shell
      whoami
      # 假设输出为: bianbu
      ip a | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d'/' -f1
      # 假设输出为： 192.168.10.156
      ```
-   
+
    - 然后,切换到**宿主机环境**，注意这里是宿主机环境，不在虚拟机中，使用 `scp` 命令将 `efi.img` 文件远程传输到工作目录。
-   
+
      ```shell
      scp username@ip_addr:~/efi.img ~/bianbu-workspace
      # 例如：scp bianbu@192.168.10.156:~/efi.img ~/bianbu-workspace
@@ -171,7 +171,7 @@ sidebar_position: 6
 4. **GRUB 配置**
 
    - 将更改获取的UUID同步到环境变量中，rootfs的UUID对应`UUID_ROOTFS`, bootfs的UUID对应`UUID_BOOTFS`.
-   
+
    ```shell
    # 请将‘xxxxx’替换为对应的UUID
    export UUID_ROOTFS=xxxxx
@@ -344,12 +344,12 @@ sidebar_position: 6
       insmod part_gpt
       insmod ext2
       search --no-floppy --fs-uuid --set=root $UUID_BOOTFS
-      echo	'Loading Linux 6.6.63 ...'
-      linux	/vmlinuz-6.6.63 root=UUID=$UUID_ROOTFS ro  earlycon=sbi earlyprintk quiet splash plymouth.ignore-serial-consoles plymouth.prefer-fbcon console=ttyS0,115200 loglevel=8 clk_ignore_unused swiotlb=65536 rdinit=\/init workqueue.default_affinity_scope=system rootwait rootfstype=ext4
-      echo	'Loading initial ramdisk ...'
-      initrd	/initrd.img-6.6.63
-      echo	'Loading device tree blob...'
-      devicetree	/spacemit/6.6.63/k1-x_MUSE-Pi-Pro.dtb
+      echo 'Loading Linux 6.6.63 ...'
+      linux /vmlinuz-6.6.63 root=UUID=$UUID_ROOTFS ro  earlycon=sbi earlyprintk quiet splash plymouth.ignore-serial-consoles plymouth.prefer-fbcon console=ttyS0,115200 loglevel=8 clk_ignore_unused swiotlb=65536 rdinit=\/init workqueue.default_affinity_scope=system rootwait rootfstype=ext4
+      echo 'Loading initial ramdisk ...'
+      initrd /initrd.img-6.6.63
+      echo 'Loading device tree blob...'
+      devicetree /spacemit/6.6.63/k1-x_MUSE-Pi-Pro.dtb
    }
 
    ### END /etc/grub.d/10_linux ###

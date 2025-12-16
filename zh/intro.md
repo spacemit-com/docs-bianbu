@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # 简介
 
-**Bianbu** 是为RISC-V架构的处理器深度优化的操作系统，基于Ubuntu社区源码构建，为进迭时空AI CPU提供系统底座。Bianbu为开发者和用户提供以下版本镜像：
+**Bianbu** 是为 RISC-V 架构的处理器深度优化的操作系统，基于 Ubuntu 社区源码构建，为进迭时空 AI CPU 提供系统底座。Bianbu 为开发者和用户提供以下版本镜像：
 
 - **GNOME桌面版本：** 原生桌面版，预装GNOME Shell桌面环境、Chromium、LibreOffice、MPV等应用。
 - **LXQt桌面版本：** 基于LXQt重新设计和开发的轻桌面，用于轻量级，对资源占用和性能有要求的场景。

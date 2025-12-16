@@ -7,7 +7,6 @@ sidebar_position: 1
 
 **Bianbu** is an operating system deeply optimized for RISC-V architecture processors, built on the Ubuntu community source code, and provides a system foundation for iterative spatiotemporal AI CPUs. Bianbu provides the following version images for developers and users:
 
-
 - **GNOME Desktop Version:** The native desktop version comes pre-installed with the GNOME Shell desktop environment, Chromium, LibreOffice, MPV, and other applications.
 - **LXQt Desktop Version:** A lightweight desktop redesigned and developed based on LXQt, designed for lightweight scenarios with requirements for resource consumption and performance.
 - **Minimal Version:** Minimal system version, providing a command-line interface.

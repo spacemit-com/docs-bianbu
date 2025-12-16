@@ -12,3 +12,4 @@ Here are some helpful guides to support customizing your own system using Bianbu
 - [Bianbu 2.1/2.2 ROOTFS Creation](bianbu_2.1_rootfs_create.md)
 - [Single Application ROOTFS Creation](single_app_rootfs_create.md)
 - [Image Creation Guide](./image.md)
+- [UEFI Firmware and System Image Creation Guide](./uefi_image.md)
