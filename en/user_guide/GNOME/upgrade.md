@@ -26,7 +26,7 @@ Both **Bianbu GNOME Desktop Version** and **Bianbu NAS** support online upgrades
 
 > **Mind below before upgrading**
 >
-> Upgrading across major versions (e.g., 1.0.15 → 2.0.x) may take up to **2 hours** to complete.
+> Upgrading across major versions (e.g., V1.0.15 → V2.0.x) may take up to **2 hours** to complete.
 >
 > - The final configuration stage (approximately 30 minutes) requires multiple user confirmations.
 > - Recommended actions:

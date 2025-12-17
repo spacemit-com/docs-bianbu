@@ -2,16 +2,20 @@
 sidebar_position: 4
 ---
 
-# MUSE Pi/MUSE Pi Pro 扩展 IO 定义
+# MUSE Pi / MUSE Pi Pro Expansion I/O Definitions
 
-MUSE Pi/MUSE Pi Pro 主板上都有外扩IO，方便用户扩展外设，比如GPIO设备，I2C设备，SPI设备，在**Bianbu Star V2.1.5**及以后的版本，对这些扩展IO功能进行了初始化默认定义，用户可以不用去重新修改dts。
+Both the **MUSE Pi** and **MUSE Pi Pro** mainboards provide external expansion I/O headers, allowing users to connect additional peripherals such as **GPIO**, **I²C**, and **SPI** devices.
+
+Starting from **Bianbu Star V2.1.5**, these expansion I/O interfaces are **pre-initialized with default definitions**. In most use cases, users can directly access the expansion I/O without modifying the device tree (`.dts`) files.
 
 ## MUSE Pi Pro
 
-MUSE Pi PRO的40 Pin扩展IO功能定义如下：
+The **MUSE Pi Pro** features a **40-pin expansion header**.  
+The functional pin definitions are shown below:
 ![MUSE Pi Pro](static/musepipro_pin.png)
 
 ## MUSE Pi
 
-MUSE Pi 的 26 Pin 扩展 IO 功能定义如下：
+The **MUSE Pi** provides a **26-pin expansion header**.  
+The functional pin definitions are shown below:
 ![MUSE Pi](static/musepi_pin.png)

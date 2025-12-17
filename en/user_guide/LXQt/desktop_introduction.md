@@ -2,48 +2,70 @@
 sidebar_position: 1
 ---
 
-# 简介
+# Introduction
 
-Bianbu LXQt 桌面是基于 Labwc 合成器及 QT 开发的桌面环境。致力于将简洁的视觉体验与直观高效的交互逻辑融为一体，为用户提供全新的轻量桌面环境。
+Bianbu LXQt is a lightweight desktop environment built on the **Labwc compositor** and the **Qt framework**. It is designed to combine a clean visual style with intuitive and efficient interaction, delivering a modern desktop experience that remains fast, responsive, and resource-efficient.
 
-![桌面简介头部](static/desktop-banner.jpg)
+![Desktop overview banner](static/desktop-banner.jpg)
 
-## 产品概述
+## Overview
 
-深度融合 LXQt 桌面环境与 Labwc 窗口合成器的轻量级桌面，以 Labwc 面向 Wayland 的高效合成能力为核心，重构底层体验，在 Bianbu 系统上，它交付了一个极致流畅、视觉统一且资源克制的现代操作环境，实现简洁设计与高效交互的本质统一。
+Bianbu LXQt deeply integrates the **LXQt desktop environment** with the **Labwc Wayland compositor**. By leveraging Labwc’s efficient Wayland-native composition, the desktop redefines the underlying user experience on the Bianbu system.
 
-## 产品特点
+The result is a desktop environment that is:
 
-- **交互简洁**：现代化视觉设计，交互逻辑贴合直觉，上手即用；
-- **轻量高效**：轻量化设计带来系统与应用启动速度、桌面流畅性的大幅提升，秒级响应；
-- **开箱即用**：原生集成开发、办公、学习及AI全栈工具链件，即刻创造；
-- **硬核加速**：充分利用芯片硬件加速能力，并对RISC-V架构原生优化；
+- Visually consistent  
+- Exceptionally smooth  
+- Carefully optimized for low resource usage  
 
-## 产品愿景
+Bianbu LXQt achieves a balanced combination of **minimalist design** and **high-efficiency interaction**, making it well suited for both development and production environments.
 
-成为 RISC-V 平台上最流畅好用的桌面环境系统；
+## Key Features
 
-## 目标用户场景
+- **Simple and Intuitive Interaction**  
+  Modern visual design with clear and predictable workflows. Users can get started immediately with minimal learning effort.
 
-- 开发者/极客：需要纯净、高性能、低干扰的开发环境。
-- 教育/学习：适用于计算机教室与教育硬件，“零学习成本”与“开箱即用”降低教学门槛。
-- AI推理终端/云笔电：轻量系统桌面为AI算力与云流媒体释放最大系统资源。
-- 机器人/工业计算：为机器人、SBC、工业面板等提供稳定、高效的专用交互界面。
+- **Lightweight and High Performance**  
+  Optimized for fast system startup, rapid application launch, and smooth desktop responsiveness, delivering near-instant feedback.
 
-## 性能参数对比
+- **Ready Out of the Box**  
+  Includes native toolchains for development, office work, learning, and AI workflows, enabling productivity from the first boot.
 
-**Bianbu LXQt V2.3.0 与 Bianbu GNOME V2.2 性能对比 (基于 K1 MUSE Book)**
+- **Hardware-Accelerated and RISC-V Optimized**  
+  Fully utilizes hardware acceleration and is natively optimized for the RISC-V architecture.
 
-| 测试类别     | 测试项                         | Bianbu GNOME V2.2 | Bianbu LXQt V2.3.0 | 性能提升倍数 |
-| :----------- | :----------------------------- | :--------------------------- | :--------------------------- | :------- |
-| **系统启动** | 开机速度（开机到登录界面）     | 24s                          | 16s                       | 1.5x     |
-| ^            | 登录速度（输入密码到桌面加载完成） | 17.5s                        | 7.91s                         | 2.21x     |
-| ^            | 锁屏解锁（输入密码到桌面加载完成） | 10s                          | 1s                            | 10x       |
-| **应用启动** | 设置启动                          | 3.36s                        | 0.93s                        | 3.61x |
-| ^            | MPV启动                              | 1.74s                        | 0.96s                        | 1.81x     |
-| ^            | 终端启动                             | 3.3s                        | 0.37s                        | 8.92x     |
-| ^            | 图像查看器启动                         | 1.76s                          | 0.21s                          | 8.38x     |
-| ^            | 文件管理器启动                      | 1.5s                        | 0.43s                        | 3.49x     |
-| **唤醒速度** | 系统挂起后唤醒时间             | 2.3s                         | 1.2s                        | 1.91x     |
-| **显示帧率** | 文件管理器文件目录（上下滑动） | 45 FPS                       | 85 FPS                       | 1.88x     |
+## Vision
 
+To become the **most smooth, efficient, and user-friendly desktop environment on the RISC-V platform**.
+
+## Target Use Cases
+
+- **Developers and Advanced users**  
+  A clean, high-performance, low-distraction environment for software development and experimentation.
+
+- **Education and Learning**  
+  Ideal for computer labs and educational devices, with a “zero learning curve” and ready-to-use setup that lowers teaching and deployment costs.
+
+- **AI Inference Terminals and Cloud Laptops**  
+  A lightweight desktop that maximizes system resources for AI workloads and cloud-based applications.
+
+- **Robotics and Industrial Computing**  
+  Provides a stable and efficient user interface for robots, SBCs, and industrial control panels.
+
+## Performance Comparison
+
+**Bianbu LXQt V2.3.0 vs. Bianbu GNOME V2.2**  
+*Test platform: K1 MUSE Book*
+
+| Category | Test Item | Bianbu GNOME v2.2 | Bianbu LXQt v2.3.0 | Improvement |
+|--------|----------|------------------|-------------------|------------|
+| **System Startup** | Power-on to login screen | 24 s | 16 s | 1.5× |
+| ^ | Login to desktop ready | 17.5 s | 7.91 s | 2.21× |
+| ^ | Screen unlock to desktop | 10 s | 1 s | 10× |
+| **Application Launch** | Settings | 3.36 s | 0.93 s | 3.61× |
+| ^ | MPV | 1.74 s | 0.96 s | 1.81× |
+| ^ | Terminal | 3.3 s | 0.37 s | 8.92× |
+| ^ | Image Viewer | 1.76 s | 0.21 s | 8.38× |
+| ^ | File Manager | 1.5 s | 0.43 s | 3.49× |
+| **Resume** | Wake from suspend | 2.3 s | 1.2 s | 1.91× |
+| **Display Frame Rate** | File manager scrolling | 45 FPS | 85 FPS | 1.88× |
