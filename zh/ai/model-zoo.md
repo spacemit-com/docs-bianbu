@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# model-zoo
+# Model Zoo
 
 ## 项目简介
 
