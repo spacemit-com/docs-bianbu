@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Frequently Asked Questions (FAQ)
 
-This document summarizes common issues and solutions when using the MUSE Pi Pro development board, covering flashing, power supply, and WiFi connection scenarios.
+This document summarizes common issues and solutions for the MUSE Pi Pro development board, including flashing, power supply, and WiFi connectivity.
 
 ---
 
@@ -21,16 +21,16 @@ Choose based on your actual use case:
 
 | Use Case | Recommended Specification |
 | --- | --- |
-| System boot, light workloads | 5V / 2A |
-| Full-load operation, multiple peripherals | 12V / 3A |
+| System boot and light workloads | 5V / 2A |
+| Full-load operation and multiple peripherals | 12V / 3A |
 
 ---
 
 ## Flashing
 
-### Q: What should I check before starting to flash?
+### Q: What should be checked before flashing?
 
-Before starting to flash, make sure:
+Before flashing, confirm the following:
 
 - You have entered flashing mode.
 - Titan can recognize the development board.
@@ -40,17 +40,17 @@ Before starting to flash, make sure:
 
 ---
 
-### Q: How do I enter flashing mode?
+### Q: How is flashing mode entered?
 
-Follow these steps.
+Perform the following steps.
 
 When the device is powered off:
 
 1. Press and hold the **FDL** (firmware download) button.
-2. Plug in the Type-C cable to connect to the host computer, which powers on the device.
+2. Connect the Type-C cable to the host computer to power on the device.
 3. Release the **FDL** button.
 
-When the device is already powered on via USB Type-C:
+When the device is powered on through the USB Type-C cable:
 
 1. Press and hold the **FDL** (firmware download) button.
 2. Briefly press the **RST** (reset) button.
@@ -60,15 +60,15 @@ When the device is already powered on via USB Type-C:
 
 ---
 
-### Q: How do I confirm that flashing mode was entered successfully?
+### Q: How can successful entry into flashing mode be confirmed?
 
-You can verify using either of the following methods.
+Use either of the following methods for confirmation.
 
 **Titan (recommended)**
 
 Open Titan and click **Refresh Device** or **Scan Device**.
 
-If a device serial number or "Connected" status is shown, flashing mode was entered successfully.
+If a device serial number or "Connected" is displayed, flashing mode has been entered successfully.
 
 ![Successful device scan](static/FAQ19.png)
 
@@ -86,19 +86,19 @@ If you see:
 DFU USB download gadget
 ```
 
-flashing mode was entered successfully.
+flashing mode has been entered successfully.
 
 ![lsusb example](static/FAQ23.png)
 
-> **Windows users**
+> **Windows**
 >
 > Windows has no `lsusb` command, and Device Manager may not correctly show the device due to driver issues.
 >
-> It is recommended to use Titan directly to check whether the device is recognized.
+> Use Titan directly to confirm whether the device is recognized.
 
 ---
 
-### Q: What should I do if Titan cannot recognize the device?
+### Q: What should be done if Titan cannot recognize the device?
 
 If Titan cannot scan the device:
 
@@ -109,11 +109,11 @@ Check the following in order:
 1. Re-enter flashing mode.
 2. Switch to a different USB port on the computer (a port connected directly to the motherboard is recommended).
 3. Switch to a different USB cable that supports data transfer.
-4. If it still cannot be recognized, contact customer support.
+4. If the device still cannot be recognized, contact customer support.
 
 ---
 
-### Q: How do I choose the correct image?
+### Q: How is the correct image selected?
 
 MUSE Pi Pro supports two storage mediums:
 
@@ -122,11 +122,11 @@ MUSE Pi Pro supports two storage mediums:
 | eMMC (default) | eMMC image |
 | Micro SD card | `.img` image |
 
-You can confirm this by:
+Confirm the storage medium as follows:
 
-- Checking the label on the back of the board or the product manual.
-- Checking whether an SD card is inserted.
-- If unsure, choose the **eMMC image** by default.
+- Check the label on the back of the development board or the product manual.
+- Check whether an SD card is installed.
+- If the storage medium cannot be confirmed, select the **eMMC image**.
 
 Download URL:
 
@@ -136,11 +136,11 @@ Download URL:
 
 ---
 
-### Q: After clicking "Start Flashing," it shows "Device does not exist." What should I do?
+### Q: What should be done if "Device does not exist" is displayed after clicking "Start Flashing"?
 
 **Cause**
 
-The USB connection was disconnected, usually because:
+The USB connection has been interrupted, typically because:
 
 - The USB cable is loose.
 - The USB cable was unplugged.
@@ -153,11 +153,11 @@ The USB connection was disconnected, usually because:
 1. Check that the USB cable is securely connected.
 2. Re-enter flashing mode.
 3. In Titan, click **Refresh Device** or **Scan Device**.
-4. Once the device is recognized, start flashing immediately and avoid touching the USB cable.
+4. After the device is recognized, start flashing immediately and avoid touching the USB cable.
 
 ---
 
-### Q: What should I do if flashing fails immediately after clicking "Start Flashing"?
+### Q: What should be done if flashing fails immediately after clicking "Start Flashing"?
 
 **Cause**
 
@@ -174,7 +174,7 @@ The USB connection was interrupted right after flashing started.
 
 ---
 
-### Q: What should I do if flashing fails partway through with a write error?
+### Q: What should be done if a write failure is reported during flashing?
 
 **Cause**
 
@@ -188,7 +188,7 @@ Unplug and reconnect the USB cable, making sure both ends are securely connected
 
 ---
 
-### Q: What should I do if flashing fails with no detailed error message?
+### Q: What should be done if "Write failed" is reported without detailed error information?
 
 **Cause**
 
@@ -216,7 +216,7 @@ Correct example:
 
 ---
 
-### Q: After flashing succeeds, the USB port has no power, the MIPI screen shows nothing, or the system behaves abnormally. What should I do?
+### Q: What should be done if the USB port supplies no power, the MIPI screen is blank, or the system operates abnormally after flashing succeeds?
 
 If any of the following issues occur after a successful flash:
 
@@ -229,7 +229,7 @@ This is usually caused by an incorrect board model configuration.
 
 Incorrect example:
 
-The board's actual model is **MUSE-Pi-Pro**, but **MUSE-Pi** was selected during configuration.
+The actual development board model is **MUSE-Pi-Pro**, but **MUSE-Pi** was selected during ID programming.
 
 ![Error example](static/FAQ13.png)
 
@@ -239,11 +239,11 @@ The board's actual model is **MUSE-Pi-Pro**, but **MUSE-Pi** was selected during
 
 ---
 
-### Q: How do I recover from an incorrect board model configuration?
+### Q: How is an incorrect board model configuration recovered?
 
 **Step 1: Re-enter flashing mode**
 
-Refer to the earlier section "How do I enter flashing mode?"
+Refer to "How is flashing mode entered?"
 
 **Step 2: Read the device information**
 
@@ -274,9 +274,9 @@ Restart Titan and read again.
 
 **Step 3: Write the device information**
 
-Fill in the correct:
+Enter the correct:
 
-- Board model.
+- Development board model.
 - Storage medium.
 
 If unsure, contact customer support.
@@ -293,7 +293,7 @@ Serial communication interface successful write example:
 >
 > Do not plug or unplug the USB cable while reading or writing device information.
 
-**Step 4: Verify the recovery**
+**Step 4: Verify recovery**
 
 Confirm that the following functions have returned to normal:
 
@@ -307,21 +307,21 @@ If the issue persists, contact customer support.
 
 ## WiFi
 
-### Q: Is an antenna required before using WiFi?
+### Q: Must an antenna be connected before using WiFi?
 
 **Yes, it is required.**
 
-Without an antenna connected, you may experience:
+Without an antenna connected, the following issues may occur:
 
-- Inability to detect any WiFi networks.
+- WiFi networks cannot be detected.
 - Extremely weak WiFi signal.
 - Unstable connections.
 - Frequent disconnections.
 
-The antenna connector is located at the **ANTENNA** label on the board.
+The antenna connector is located at the **ANTENNA** marking on the development board.
 
 ![Antenna location](static/FAQ2.png)
 
 ![Antenna location](static/FAQ25.png)
 
-If you don't have an antenna available, it is recommended to use a wired network connection instead.
+If an antenna is not available, use a wired network connection instead.
