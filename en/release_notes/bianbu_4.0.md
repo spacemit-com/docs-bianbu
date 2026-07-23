@@ -19,6 +19,26 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - Using this repository enables installation of packages released in subsequent V4.0.x versions, such as V4.0.1.
 - To download source packages, change `Types: deb` to `Types: deb deb-src`.
 
+## V4.0.4 Release Notes
+
+**Release Date:** 2026-07-23
+
+The corresponding **BSP version:** [v1.0.5](https://spacemit.com/community/document/info?lang=en&nodepath=software/SDK/buildroot/k3_buildroot/release_notes/bl-v1.0.y.md)
+
+### LXQt Desktop
+
+- Added session settings.
+- Fixed an issue in multi-display configurations where status bar pop-ups were displayed in incorrect positions.
+
+### Core Components
+
+- Fixed an issue where mpv video playback would stall after the system resumed from suspend.
+- Fixed reliability issues occurring after repeated suspend/resume cycles in some modules.
+- Fixed an issue where LXQt displayed a black screen after repeated suspend/resume cycles.
+- Fixed an issue where System Monitor exited unexpectedly after selecting a CPU color.
+- Fixed a Type-C compatibility issue that prevented the K3 Pico board from booting.
+- Fixed a black screen issue during K3 Pico OTA updates.
+
 ## V4.0.1 Release Notes
 
 **Release Date:** 2026-05-29
