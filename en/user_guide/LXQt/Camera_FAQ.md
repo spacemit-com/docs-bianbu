@@ -4,7 +4,7 @@ sidebar_position: 7
 
 # MIPI Camera Usage and FAQ
 
-This document describes the complete workflow for connecting a MIPI camera (such as IMX219 or OV5647) to the MUSE Pi Pro development board, and summarizes common issues and solutions encountered during setup, covering hardware connection, automatic camera detection, Virtual Camera configuration, V4L2 capture testing, and JDK Camera SDK integration.
+This document describes the complete workflow for connecting a MIPI camera, such as IMX219 or OV5647, to the MUSE Pi Pro development board. It also summarizes common issues encountered during setup and their solutions, including hardware connection, automatic camera detection, Virtual Camera configuration, V4L2 image-capture testing, and JDK Camera SDK integration.
 
 ---
 
@@ -12,7 +12,7 @@ This document describes the complete workflow for connecting a MIPI camera (such
 
 ### Hardware Connection
 
-Connect the MIPI camera module to the corresponding MIPI CSI interface on the development board (the board generally provides multiple CSI slots; check the board's silkscreen and user manual for the exact location and cable orientation). Also connect the board to a display using an HDMI cable so you can view the captured image later (IMX219 uses the white ribbon cable connection shown in the picture, while OV5647 uses the copper-colored ribbon cable connection, indicated by the red arrow).
+Connect the MIPI camera module to the corresponding MIPI CSI interface on the development board. The board generally provides multiple CSI slots; confirm the exact location and cable orientation using the board silkscreen and user manual. Connect the board to a display with an HDMI cable to view the captured image. IMX219 uses the white ribbon cable connection shown in the image, whereas OV5647 uses the copper-colored ribbon cable connection indicated by the red arrow.
 
 ![](static/FAQ51.png)
 
@@ -20,7 +20,7 @@ Connect the MIPI camera module to the corresponding MIPI CSI interface on the de
 
 ### Identifying the CSI Channel and Auto-Detecting the Camera
 
-The board provides the `cam-test` tool, which can automatically probe a specified CSI channel. First confirm which CSI interface the camera is actually connected to, then run the detection script with the matching number — for example, if the camera is connected to CSI3 (run the following commands in a terminal):
+The board provides the `cam-test` tool, which can automatically probe a specified CSI channel. Confirm the CSI interface to which the camera is connected, then run the detection script with the corresponding number. For example, if the camera is connected to CSI3, run the following command in a terminal:
 
 ```bash
 cam-test /usr/share/camera_json/csi3_camera_detect.json
@@ -34,19 +34,19 @@ I: auto_detect_camera(1430): "auto detect sensor ===================== finish "
 I: update_json_file(723): "save json to /tmp/csi3_camera_auto.json success"
 ```
 
-Once detection succeeds, the tool automatically generates a usable configuration file for this camera under `/tmp/` (with a filename like `csiN_camera_auto.json`), which will be used in the next step.
+After successful detection, the tool automatically generates a usable configuration file for the camera under `/tmp/`, with a filename such as `csiN_camera_auto.json`. This file is used in the next step.
 
-> The relationship between the number N in `csiN_camera_detect.json` and the physical CSI interface number may not be entirely consistent across board/driver batches. If you are not sure which physical interface corresponds to which script, you can run the detection scripts for CSI1 through CSI3 one by one to check. If none of them detect the camera, the cable may be loose or making poor contact, or this camera model may not yet be supported by the driver — in the latter case, refer to the official camera driver adaptation documentation.
+> The correspondence between the number N in `csiN_camera_detect.json` and the physical CSI interface number may vary between board and driver batches. If the correspondence is uncertain, run the detection scripts for CSI1 through CSI3 one at a time to identify the correct interface. If the camera is not detected by any of them, the cable may be loose or making poor contact, or the camera model may not yet be supported by the driver. For unsupported models, refer to the official camera driver adaptation documentation.
 
 ### Configuring Virtual Camera Mode
 
-Copy the configuration file generated in the previous step to the fixed path the system reads for the virtual camera configuration, and rename it to `svivi_cam1.json`:
+Copy the configuration file generated in the previous step to the fixed path used by the system for the Virtual Camera configuration, and rename it `svivi_cam1.json`:
 
 ```bash
 sudo cp /tmp/csi3_camera_auto.json /root/svivi_cam1.json
 ```
 
-> In `csi3_camera_auto.json`, `csi3` should be changed to the actual channel number used in the previous step.
+> In `csi3_camera_auto.json`, replace `csi3` with the actual valid channel number used in the previous step.
 
 Then run the following command:
 
@@ -56,7 +56,7 @@ sudo grep -q '"use_v4l"' /root/svivi_cam1.json || sudo sed -i '1a\    "use_v4l":
 
 ### Verifying Image Capture with the V4L2 Tool
 
-`v4l2_test_spacemit` is a capture testing tool based on the standard V4L2 interface, used to verify whether the camera pipeline can actually produce images.
+`v4l2_test_spacemit` is an image-capture test tool based on the standard V4L2 interface. It verifies whether the camera pipeline can produce images correctly.
 
 First download the source and compile it (**Note**: be sure to `cd` into the newly created directory before downloading and compiling, otherwise the build will fail due to a name collision between the directory and the compiled executable — see the corresponding FAQ item below for details):
 
@@ -81,7 +81,7 @@ Once compiled, run the capture test:
   --stream-to=test.yuv
 ```
 
-If the pipeline is working correctly, the terminal will keep scrolling with capture logs similar to the following:
+If the pipeline is operating correctly, the terminal continuously displays capture logs similar to the following:
 
 ```bash
 VIDIOC_DQBUF: ok, type:9
@@ -89,7 +89,7 @@ VIDIOC_QBUF: ok, type:9
 do_handle_cap:723 [INFO]m2m capture dequeue----------------: 15
 ```
 
-You can interrupt the capture at any time with `Ctrl+C`.
+Capture can be interrupted at any time with `Ctrl+C`.
 
 > **Limitations**
 >
@@ -97,11 +97,11 @@ You can interrupt the capture at any time with `Ctrl+C`.
 > - Only the NV12 image format is supported.
 > - The buffer memory type must be dmabuf.
 
-Once you can get this kind of continuous capture log output normally, it means the pipeline from the hardware all the way to V4L2 is fully working, and you can move on to more advanced development.
+Continuous output of this type indicates that the complete pipeline, from the hardware through V4L2, is operating correctly and that advanced development can proceed.
 
 ### Advanced Development: C++ SDK Usage Example
 
-For higher-level control and image processing capabilities, you can use the SDK provided by JDK:
+For higher-level control and image-processing capabilities, use the SDK provided by JDK:
 
 ##### C++ Sample Code
 
@@ -140,7 +140,7 @@ sudo insmod /opt/jdk/ko/jdk_dma.ko
 ./workspace/jdk_cam /dev/video50
 ```
 
-If everything works correctly, you should see logs similar to the following during startup, indicating that both the capture pipeline and the VO (video output) module initialized successfully:
+If initialization is successful, startup produces logs similar to the following, indicating that both the capture pipeline and the VO (video output) module initialized successfully:
 
 ```text
 start buffer preprocessing
@@ -160,17 +160,17 @@ VIDIOC_STREAMON succeeded
 index:0,dma_fd:12 width:1920,height:1080,size:3110400
 ```
 
-Once running, the captured camera image will be displayed in real time on the connected monitor.
+After startup, the captured camera image is displayed in real time on the connected monitor.
 
 ![Camera image](static/FAQ52.png)
 
-> If the log contains errors such as `SDL_Error: wayland not available` or `VO_Init ... ret = -400`, it means the image failed to display properly. This is usually related to the execution environment (for example, running over an SSH remote terminal instead of the local desktop terminal) — see the FAQ section below for the specific cause and solution.
+> Errors such as `SDL_Error: wayland not available` or `VO_Init ... ret = -400` indicate that the image was not displayed correctly. This is usually related to the execution environment, such as running from an SSH remote terminal instead of the local desktop terminal. See the FAQ section below for the specific cause and solution.
 
 ---
 
 ## FAQ
 
-### Q: When configuring the Virtual Camera model, the generated json file appears empty when opened. What should I do?
+### Q: When configuring the Virtual Camera model, why does the generated JSON file appear empty when opened?
 
 As shown below, the file appears empty when opened directly:
 
@@ -190,7 +190,7 @@ sudo vim /root/svivi_cam1.json
 
 ---
 
-### Q: Compiling v4l2_test_spacemit according to the documentation results in an error. What should I do?
+### Q: Why does compiling v4l2_test_spacemit according to the documentation result in an error?
 
 As shown below, copying and running the documented commands in order results in a compilation failure:
 
@@ -211,7 +211,7 @@ cd v4l2_test_spacemit
 
 ---
 
-### Q: After running the capture command, there is no normal image output, and an error is shown instead. What should I do?
+### Q: Why is there no normal image output after the capture command is run, and why is an error displayed instead?
 
 As shown below:
 
@@ -233,7 +233,7 @@ The correct format should be:
 
 **Solution**
 
-Check whether every field in the json file (except the last one) ends with a comma `,`, then fix it and try again. You can also validate whether the json format is correct with the following command:
+Check whether every field in the JSON file, except the last one, ends with a comma `,`; correct the format and try again. JSON syntax can also be validated with the following command:
 
 ```bash
 sudo python3 -m json.tool /root/svivi_cam1.json
@@ -243,7 +243,7 @@ If the full json content is printed out normally, the format has been fixed corr
 
 ---
 
-### Q: Operating on files under /opt as described in the documentation reports insufficient permissions. What should I do?
+### Q: Why do operations on files under /opt, as described in the documentation, report insufficient permissions?
 
 The following commands report an error:
 
@@ -267,7 +267,7 @@ sudo insmod /opt/jdk/ko/jdk_dma.ko
 
 ---
 
-### Q: After running the final startup command, the logs look normal, but nothing appears on screen. What should I do?
+### Q: Why does nothing appear on the screen after the final startup command is run even though the logs appear normal?
 
 After running the following command, the terminal logs show no errors, but no camera image appears on the HDMI display/screen:
 
@@ -308,7 +308,7 @@ A MIPI camera ribbon cable carries power, ground, I2C control lines (SCL/SDA), a
 
 ---
 
-### Q: After bending or folding the camera ribbon cable, I see recognition errors or intermittent failures. What is the cause?
+### Q: What causes recognition errors or intermittent failures after the camera ribbon cable is bent or folded?
 
 **Cause**
 
