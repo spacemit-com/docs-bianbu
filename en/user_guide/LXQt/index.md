@@ -27,3 +27,4 @@ The Bianbu LXQt User Guide provides documentation for using the LXQt desktop env
 ## Troubleshooting
 
 - [FAQ](K1_FAQ.md)
+- [MIPI Camera Usage and FAQ](Camera_FAQ.md)

@@ -27,3 +27,4 @@ Bianbu LXQt 用户指南包含以下内容：
 ## 故障排查
 
 - [常见问题解答](K1_FAQ.md)
+- [MIPI 相机使用及常见问题](Camera_FAQ.md)

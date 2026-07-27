@@ -266,7 +266,7 @@ Linux 下若读号失败：
 执行：
 
 ```bash
-cd ~/titian工具所在路径
+cd ~/titan工具所在路径
 sudo ./titantools_for_linux-2.2.0-Rc.AppImage --no-sandbox
 ```
 
@@ -325,3 +325,6 @@ titan界面写号成功示例：
 ![天线位置](static/FAQ30.png)
 
 如暂无天线，建议优先使用有线网络连接。
+
+---
+
