@@ -80,7 +80,7 @@ source myenv/bin/activate
 (myenv) ➜  ~
 ```
 
-pyenv命令提示符前缀表示当前终端会话位于名为 pyenv 虚拟环境中。
+命令提示符中的 `(myenv)` 前缀表示当前终端会话位于名为 `myenv` 的虚拟环境中。
 要检查您是否处于虚拟环境中，请使用 pip list 查看已安装软件包的列表：
 
 ```shell
@@ -147,165 +147,62 @@ Type "help", "copyright", "credits" or "license" for more information.
 | :------------------: | :----------: |
 |     Python 3.12      |   长期支持   |
 |     Python 3.13      |   长期支持   |
+|     Python 3.14      |   长期支持   |
 
 强烈建议您使用 Python 3.12 及以上版本的 Python，通常，跟随系统的 Python 版本是较好的做法。
 
-### 使用pyenv管理Python 版本
+### 使用 uv 管理 Python 解释器版本
 
-pyenv 是一个非常流行的 Python 版本管理工具，它允许您轻松地安装、管理和切换多个 Python 版本。您可以根据项目需要在不同的 Python 版本之间自由切换，下面介绍如何使用 pyenv 配置多个 Python 版本。
+管理 Python 解释器版本时，建议使用 uv 而不是 conda。uv 可以按需安装指定版本的 Python、创建虚拟环境，并通过与 pip 兼容的命令安装 Python 包。
 
-更多信息请参考[pyenv官方教程](https://github.com/pyenv/pyenv)
+更多信息请参考 [uv 官方文档](https://docs.astral.sh/uv/)。
 
-#### 安装pyenv
+#### 安装 uv
 
-```shell
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-```
-
-#### 配置shell环境
-
-对于Zsh：
+执行以下命令安装 uv：
 
 ```shell
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-source ~/.zshrc
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-对于Bash：
+安装完成后，重新进入终端以刷新环境。
+
+#### 创建虚拟环境
+
+执行以下命令创建名为 `myvenv` 的虚拟环境，并使用 Python 3.14 解释器。K3 推荐使用 Python 3.14，K1 推荐使用 Python 3.12。
 
 ```shell
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-source ~/.bashrc
+uv venv myvenv --python 3.14
 ```
 
-#### 安装多个 Python 版本
+如果本地没有符合要求的 Python 解释器，uv 会自动下载并安装。
 
-您可以执行以下命令安装多个python版本，这里以3.10.0为例，也可以指定如3.8.5等 Python 版本。
+#### 使用 uv pip 安装包
+
+设置阿里云 PyPI 镜像为主软件源，并将 SpacemiT PyPI 软件源配置为额外软件源。然后激活虚拟环境并安装软件包：
 
 ```shell
-pyenv install 3.10.0
+export UV_INDEX_URL=https://mirrors.aliyun.com/pypi/simple
+export UV_EXTRA_INDEX_URL=https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple
+source myvenv/bin/activate
+uv pip install pkg_name
 ```
 
-安装成功会出现如下显示：
+将 `pkg_name` 替换为需要安装的软件包名称。上述环境变量只对当前终端会话生效。
+
+#### 回退到 pip 安装
+
+如果某些工具或工作流必须使用 pip，可以先在虚拟环境中安装 pip：
 
 ```shell
-Downloading Python-3.10.0.tar.xz...
--> https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tar.xz
-Installing Python-3.10.0...
-patching file aclocal.m4
-patching file configure
-Hunk #5 succeeded at 10537 (offset -15 lines).
-patching file Misc/NEWS.d/next/Build/2021-10-11-16-27-38.bpo-45405.iSfdW5.rst
-patching file configure
-patching file configure.ac
-Installed Python-3.10.0 to /home/zq/.pyenv/versions/3.10.0
+source myvenv/bin/activate
+uv pip install pip -U
+deactivate
+source myvenv/bin/activate
+pip install pkg_name
 ```
 
-输入pyenv versions 查看是否出现您安装的Python版本号：
-
-```shell
-➜  ~ pyenv versions
-* system (set by /home/zq/.pyenv/version)
-  3.10.0
-```
-
-#### 设置全局 Python 版本
-
-您可以使用 pyenv global 来设置默认的 Python 版本。这会影响系统中所有终端使用的 Python 版本。
-如果您使用的是Bash，请将.zshrc替换为.bashrc。
-
-```shell
-➜  ~ pyenv global 3.10.0
-➜  ~ source ~/.zshrc
-➜  ~ python3
-Python 3.10.0 (default, Sep 13 2024, 20:53:06) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-
-再次输入 pyenv versions 您将看到python版本已经从system切换到3.10.0
-
-```shell
-➜  ~ pyenv versions
-  system
-* 3.10.0 (set by /home/zq/.pyenv/version)
-```
-
-如果您想要切回系统的python，执行 pyenv global system
-
-```shell
-➜  ~ pyenv global system
-➜  ~ source ~/.zshrc
-➜  ~ python3
-Python 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-
-当您管理多个python版本时，可以通过 pyenv versions 轻松地查看它们并切换到对应的python版本。
-
-#### 针对项目设置本地 Python 版本
-
-您可以在特定目录或项目中使用不同的 Python 版本。进入项目目录（这里为myproject），然后运行 pyenv local ：
-
-pyenv 会在该目录下生成一个名为 .python-version 的文件，指定该目录使用的 Python 版本。这样，在这个目录中工作时，Python 将默认使用 3.10.0，而不是全局版本。
-
-```shell
-➜  myproject pyenv local 3.10.0
-➜  myproject ls -a
-.  ..  .python-version
-➜  myproject
-➜  myproject python3
-Python 3.10.0 (default, Sep 13 2024, 20:53:06) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
->>> exit()
-➜  myproject cd ..
-➜  ~ python3
-Python 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-
-pyenv local 设置的Python版本只在执行该命令的项目文件夹生效，当您切换到其它文件夹时，Python会默认回到系统版本。
-
-#### 只为当前终端设置 Python 版本
-
-pyenv shell 命令允许您在当前的终端会话中使用指定的 Python 版本，而不影响全局设置：
-
-```shell
-➜  ~ pyenv shell 3.10.0
-➜  ~ python3
-Python 3.10.0 (default, Sep 13 2024, 20:53:06) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
->>> exit()
-➜  ~ pyenv shell system
-➜  ~ python3
-Python 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-
-通过这种方式，您可以快速切换版本而不用担心会对全局环境造成影响。
-
-#### 卸载 Python 版本
-
-如果您不再需要某个 Python 版本，可以使用 pyenv uninstall 命令卸载它：
-
-通过 pyenv versions 命令验证你当前使用的 Python 版本
-
-```shell
-➜  ~ pyenv uninstall 3.10.0
-pyenv: remove /home/zq/.pyenv/versions/3.10.0? [y|N] y
-pyenv: 3.10.0 uninstalled
-➜  ~ pyenv versions
-* system (set by PYENV_VERSION environment variable)
-```
+重新激活虚拟环境后，即可使用 pip 安装软件包。
 
 ### 使用SpacemiT的pypi源
 
