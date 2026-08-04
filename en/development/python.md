@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Python User Guide
 
-Python 3 is preinstalled on the Bianbu OS. You are advised to use a correct package management tool when installing third-party Python libraries. Otherwise, the dependence on software packages may be damaged.
+Python 3 is preinstalled on Bianbu OS. Use an appropriate package management tool when installing third-party Python libraries; otherwise, you may break system package dependencies.
 
 In Bianbu OS, you can install python dependencies in two ways:
 
@@ -13,20 +13,20 @@ In Bianbu OS, you can install python dependencies in two ways:
 
 ## Install Python packages using apt
 
-In Bianbu OS, it is recommended to install Python3 packages via apt. These packages are usually pre-compiled and therefore faster to install. apt manages the dependencies of all packages and includes all the sub-dependencies needed to run the package when installed. Also, apt makes sure you don't break other packages when you uninstall them.
-For example, to install scipy, the scientific computing library for Python, run the following command:
+In Bianbu OS, it is recommended to install Python3 packages via `apt`. These packages are usually pre-compiled and therefore faster to install. `apt` manages the dependencies of all packages and includes all the sub-dependencies needed to run the package when installed. Also, `apt` makes sure you don't break other packages when you uninstall them.
+For example, to install `scipy`, the scientific computing library for Python, run the following command:
 
 ```shell
 sudo apt install python3-scipy
 ```
 
-To find Python packages published with apt, use apt search. In most cases, Python packages use the prefix python3-: for example, python3-numpy corresponds to Python's numpy package.
+To find Python packages published with `apt`, use `apt search`. In most cases, Python packages use the prefix `python3-`: for example, `python3-numpy` corresponds to Python's numpy package.
 
-## Install Python packages using pip
+## Install Python packages using `pip`
 
-### Changes to the pip installation
+### Changes to the `pip` installation
 
-In Bianbu OS, users cannot use pip to install libraries directly into the system version of Python. Trying to install a Python package system-wide using pip will output an error similar to the following:
+In Bianbu OS, users cannot use `pip` to install libraries directly into the system version of Python. Trying to install a Python package system-wide using `pip` will output an error similar to the following:
 
 ```shell
 ➜  ~ pip install numpy
@@ -52,7 +52,7 @@ note: If you believe this is a mistake, please contact your Python installation 
 hint: See PEP 668 for the detailed specification.
 ```
 
-Packages installed via pip must be installed into the Python virtual environment (venv). A virtual environment is a container where you can securely install third-party modules so that they don't interfere with your system Python environment.
+Packages installed via pip must be installed into the Python virtual environment (`venv`). A virtual environment is a container where you can securely install third-party modules so that they don't interfere with your system Python environment.
 
 ### Using `pip` in a virtual environment
 
@@ -68,7 +68,7 @@ Run the following command to create the virtual environment configuration folder
 virtualenv myenv
 ```
 
-Then, run the bin/activate script in the virtualenv configuration folder to enter the virtualenv:
+Then, run the `bin/activate` script in the virtualenv configuration folder to enter the virtualenv:
 
 ```shell
 source myenv/bin/activate
@@ -80,7 +80,7 @@ Then you should see a prompt similar to the following:
 (myenv) ➜  ~
 ```
 
-The pyenv command prompt prefix indicates that the current terminal session is in a virtual environment named pyenv.
+The `(myenv)` prefix in the command prompt indicates that the current terminal session is using the virtual environment named `myenv`.
 
 To check if you are in a virtual environment, use pip list to see a list of installed packages:
 
@@ -91,9 +91,17 @@ Package Version
 pip     24.0
 ```
 
-The list should be much shorter than the list of packages installed in your system Python. You can now install packages securely using pip. Any package installed using pip in a virtual environment will only be installed in that virtual environment. In a virtual environment, the python or python3 command will automatically use the virtual Python package instead of the system Python package.
+The list should be much shorter than the list of packages installed in your system Python. You can now install packages securely using `pip`.
 
-For example, install the wheel package using pip：
+For improved compatibility, it is strongly recommended that you upgrade `pip` in the virtual environment to the latest version to avoid installation failures.
+
+```shell
+pip install --upgrade pip
+```
+
+Any package installed with `pip` in a virtual environment is installed only in that environment. Within a virtual environment, the `python` or `python3` command automatically uses the virtual environment's Python packages instead of the system Python packages.
+
+For example, install the `wheel` package using `pip`:
 
 ```shell
 (myenv) ➜  ~ pip install wheel
@@ -114,22 +122,22 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> import wheel
 ```
 
-You can use the sys module to verify that the current interpreter path works as expected：
+You can use the sys module to verify that the current interpreter path is as expected:
 
 ```shell
 >>> import sys
->>> print("The current Python interpreter path:", sys.executable)
-The current Python interpreter path: /home/zq-card/myenv/bin/python3
+>>> print("Current Python interpreter path:", sys.executable)
+Current Python interpreter path: /home/zq-card/myenv/bin/python3
 ```
 
-Use exit() to exit interactive mode：
+Use `exit()` to leave interactive mode:
 
 ```shell
 >>> exit()
 (myenv) ➜  ~
 ```
 
-To leave the virtual environment, run the following command：
+To leave the virtual environment, run the following command:
 
 ```shell
 (myenv) ➜  ~ deactivate
@@ -138,205 +146,101 @@ To leave the virtual environment, run the following command：
 ### Python Version Support
 
 | Python Interpreter Version | Support Status |
-|:-------------------------------:|:------------------:|
-| Python 3.12                     | Long-Term Support  |
-| Python 3.13                     | Long-Term Support  |
+| :------------------------: | :------------: |
+| Python 3.12 | Long-Term Support |
+| Python 3.13 | Long-Term Support |
+| Python 3.14 | Long-Term Support |
 
-Users are strongly advised to use **Python 3.12 or later**. In general, it is recommended to follow the Python version provided by the operating system for optimal compatibility and stability.
+Users are strongly advised to use Python 3.12 or later. In general, following the Python version provided by the operating system is recommended.
 
-### Use pyenv to manage Python versions
+### Use uv to manage Python interpreter versions
 
-pyenv is a very popular Python version management tool that allows you to easily install, manage, and switch between multiple versions of Python. You are free to switch between different versions of Python depending on your project's needs. Here's how to configure multiple versions of Python using pyenv.
+When managing Python interpreter versions, uv is recommended instead of conda. uv can install specified Python versions on demand, create virtual environments, and install Python packages with commands compatible with pip.
 
-See also for more information[The official pyenv tutorial](https://github.com/pyenv/pyenv)
+For more information, see the [official uv documentation](https://docs.astral.sh/uv/).
 
-#### Installing pyenv
+#### Install uv
 
-```shell
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-```
-
-#### Configuring the shell environment
-
-For Zsh:
+Run the following command to install uv:
 
 ```shell
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-source ~/.zshrc
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-For Bash:
+After installation, open a new terminal session to refresh the environment.
+
+#### Create a virtual environment
+
+Run the following command to create a virtual environment named `myvenv` with Python 3.14. Python 3.14 is recommended for K3, while Python 3.12 is recommended for K1.
 
 ```shell
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-source ~/.bashrc
+uv venv myvenv --python 3.14
 ```
 
-#### Install multiple versions of Python
+If a suitable Python interpreter is not available locally, uv downloads and installs it automatically.
 
-You can install multiple versions of python by running the following command, in this case 3.10.0, but you can also specify a Python version such as 3.8.5.
+#### Install packages with `uv pip`
+
+Set the Alibaba Cloud PyPI mirror as the primary package source and the SpacemiT PyPI source as an additional package source. Then activate the virtual environment and install a package:
 
 ```shell
-pyenv install 3.10.0
+export UV_INDEX_URL=https://mirrors.aliyun.com/pypi/simple
+export UV_EXTRA_INDEX_URL=https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple
+source myvenv/bin/activate
+uv pip install pkg_name
 ```
 
-If the installation is successful, the following display will appear:
+Replace `pkg_name` with the package name. These environment variables apply only to the current terminal session.
+
+#### Fall back to pip installation
+
+If a tool or workflow requires pip, install `pip` in the virtual environment first:
 
 ```shell
-Downloading Python-3.10.0.tar.xz...
--> https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tar.xz
-Installing Python-3.10.0...
-patching file aclocal.m4
-patching file configure
-Hunk #5 succeeded at 10537 (offset -15 lines).
-patching file Misc/NEWS.d/next/Build/2021-10-11-16-27-38.bpo-45405.iSfdW5.rst
-patching file configure
-patching file configure.ac
-Installed Python-3.10.0 to /home/zq/.pyenv/versions/3.10.0
+source myvenv/bin/activate
+uv pip install pip -U
+deactivate
+source myvenv/bin/activate
+pip install pkg_name
 ```
 
-Type pyenv versions to see if the version of Python you installed appears:
-
-```shell
-➜  ~ pyenv versions
-* system (set by /home/zq/.pyenv/version)
-  3.10.0
-```
-
-#### Set the global Python version
-
-You can use pyenv global to set the default Python version. This affects the version of Python used on all terminals in the system.
-
-If you're using Bash, replace.zshrc with.bashrc.
-
-```shell
-➜  ~ pyenv global 3.10.0
-➜  ~ source ~/.zshrc
-➜  ~ python3
-Python 3.10.0 (default, Sep 13 2024, 20:53:06) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-
-Type pyenv versions again and you'll see that the python version has switched from system to 3.10.0
-
-```shell
-➜  ~ pyenv versions
-  system
-* 3.10.0 (set by /home/zq/.pyenv/version)
-```
-
-If you want to switch back to your system's python, execute pyenv global system
-
-```shell
-➜  ~ pyenv global system
-➜  ~ source ~/.zshrc
-➜  ~ python3
-Python 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-
-When you manage multiple python versions, you can easily view them and switch to the corresponding python version via pyenv versions.
-
-#### Set the local Python version for your project
-
-You can use different versions of Python in a specific directory or project. Go to your project directory (myproject in this case), and run pyenv local:
-
-pyenv will generate a file in that directory called.python-version that specifies the version of Python being used in that directory. When working in this directory, Python will default to 3.10.0 instead of using the global version.
-
-```shell
-➜  myproject pyenv local 3.10.0
-➜  myproject ls -a
-.  ..  .python-version
-➜  myproject
-➜  myproject python3
-Python 3.10.0 (default, Sep 13 2024, 20:53:06) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
->>> exit()
-➜  myproject cd ..
-➜  ~ python3
-Python 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-
-pyenv local sets the Python version only for the project folder from which the command is executed, and when you switch to a different folder, Python will default back to the system version.
-
-#### Set the Python version only for the current terminal
-
-The pyenv shell command allows you to use the specified Python version in the current terminal session without affecting global Settings:
-
-```shell
-➜  ~ pyenv shell 3.10.0
-➜  ~ python3
-Python 3.10.0 (default, Sep 13 2024, 20:53:06) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
->>> exit()
-➜  ~ pyenv shell system
-➜  ~ python3
-Python 3.12.3 (main, Apr 10 2024, 05:33:47) [GCC 13.2.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-
-This way, you can quickly switch versions without worrying about affecting the global environment.
-
-#### Uninstall the Python version
-
-If you no longer need a version of Python, you can uninstall it using the pyenv uninstall command:
-
-Verify the version of Python you're using with the pyenv versions command
-
-```shell
-➜  ~ pyenv uninstall 3.10.0
-pyenv: remove /home/zq/.pyenv/versions/3.10.0? [y|N] y
-pyenv: 3.10.0 uninstalled
-➜  ~ pyenv versions
-* system (set by PYENV_VERSION environment variable)
-```
+After reactivating the virtual environment, you can use pip to install packages.
 
 ### Using the pypi source from SpacemiT
 
 When you use pip to install some Python packages in a virtual environment, if the packages do not provide a precompiled whl installation file suitable for RISC-V architecture, pip will pull the source code of the package and build it locally. For python packages that rely on C/C++ at the bottom, This process is usually very time-consuming and prone to compile-time dependency issues.
 
-To improve development efficiency, SpaceMIT has built some commonly used Python packages (such as numpy) for the RISC-V architecture, which have been packaged as.whl files for developers to use on the RISC-V platform. This tutorial will guide you through how to install and use these Python packages in the RISC-V environment.
+To improve development efficiency, SpacemiT has built some commonly used Python packages (such as numpy) for the RISC-V architecture, which have been packaged as `.whl` files for developers to use on the RISC-V platform. This tutorial will guide you through how to install and use these Python packages in the RISC-V environment.
 
 1. Install the PyPI package
 
-`<package_name>` is the package name.
+   `<package_name>` is the package name.
 
-```shell
-pip install --index-url https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple <package_name>
-```
+   ```shell
+   pip install --index-url https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple <package_name>
+   ```
 
 2. Configure as an additional source
 
-pip supports one main index-url by default, but you can add additional sources by configuring multiple extra-index-urls.
+   `pip` supports one main index-url by default, but you can add additional sources by configuring multiple extra-index-urls.
 
-```shell
-pip config set global.extra-index-url https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple
-```
+   ```shell
+   pip config set global.extra-index-url https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple
+   ```
 
-You can check this with pip config list, and if it was successful, you should see the following:
+   You can check this with pip config list, and if it was successful, you should see the following:
 
-```shell
-global.extra-index-url='https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple'
-```
+   ```shell
+   global.extra-index-url='https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple'
+    ```
 
-If you want to upload your own compiled whl package, please refer to:[How to upload a Python precompiled package](https://git.spacemit.com/archive/pypi/-/blob/main/README.md?ref_type=heads)
+If you want to upload your own compiled `.whl` package, see [How to upload a Python precompiled package](https://git.spacemit.com/archive/pypi/-/blob/main/README.md?ref_type=heads).
 
 ## Use the Thonny editor
 
-We recommend using [Thonny](https://thonny.org/)to edit Python code on Bianbu.
+You can use [Thonny](https://thonny.org/) to edit Python code on Bianbu. For a better experience, JupyterLab is recommended.
 
-Install：
+Install:
 
 ```shell
 sudo apt install python3-tk thonny
@@ -348,7 +252,7 @@ Once the installation is complete, enter thonny to launch the IDE interface:
 thonny
 ```
 
-By default, Thonny uses system Python. However, you can switch to using a Python virtual environment by clicking the Interpreter menu in the bottom-right corner of the Thonny window. You can choose a configured environment or use the Configure interpreter... Create a new virtual environment.
+By default, Thonny uses system Python. However, you can switch to a Python virtual environment from the Interpreter menu in the bottom-right corner of the Thonny window. You can select an existing environment or use **Configure interpreter...** to create a new virtual environment.
 
 ## Using JupyterLab (with VS Code)
 
@@ -415,13 +319,13 @@ source ~/jupter-env/bin/activate
 jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=~/
 ```
 
-Sample output as below
+You should see output similar to the following:
 
-![](./static/jupyter2.png)
+![JupyterLab terminal output](./static/jupyter2.png)
 
 Copy and save the URL that looks like:
 
-```
+```text
 http://127.0.0.1:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c
 ```
 
@@ -433,29 +337,27 @@ Open a new terminal and use the following command to find the board’s IP addre
 ip addr
 ```
 
-![](./static/ipaddr1.png)
+![Board IP address](./static/ipaddr1.png)
 
 In this example, the board IP address is `10.0.91.183`. In your environment, it may be a different address such as `192.168.x.x`.
 
 Replace `127.0.0.1` in the copied URL with the board IP address:
 
-```
+```text
 http://10.0.91.183:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c
 ```
 
 ### Accessing JupyterLab from a Browser
 
-On your x86 host machine, open a browser, in the address bar, paste the updated URL as
+On your x86 host machine, open a browser and paste the updated URL into the address bar:
 
-```
+```text
 http://10.0.91.183:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c
 ```
 
 You should see the JupyterLab interface:
 
-![](./static/jupyter3.png)
-
-现在你可以使用 Notebook 来交互式执行和调试代码，也可以打开 Terminal，Terminal 默认激活了虚拟环境，因此你可以 pip 安装想要的包，随后刷新环境以使用它。
+![JupyterLab interface](./static/jupyter3.png)
 
 You can now:
 
@@ -469,19 +371,19 @@ For more advanced usage, refer to the official documentation:
 
 1. Open VS Code and open an empty folder, then create a new file named `demo.ipynb`.
 
-   ![](./static/vscode1.png)
+   ![Creating a Jupyter notebook in VS Code](./static/vscode1.png)
 
 2. Click **Select Kernel** → **Existing Jupyter Server**, and paste the previously saved JupyterLab URL.
 
-   ![](./static/vscode-remote2.png)
+   ![Selecting an existing Jupyter server](./static/vscode-remote2.png)
 
 3. Press **Enter**
 
-   ![](./static/vscode-remote3.png)
+   ![Confirming the Jupyter server](./static/vscode-remote3.png)
 
 4. Press **Enter** again
 
-   ![](./static/vscode-remote4.png)
+   ![Confirming the kernel selection](./static/vscode-remote4.png)
 
 5. Click to select **Python 3 (ipykernel)**
 
@@ -489,13 +391,13 @@ Once configured, any newly created notebook can directly reuse this kernel witho
 
 You may run sample code to verify that everything is working correctly:
 
-![](./static/vscode-remote5.png)
+![Running a notebook in VS Code](./static/vscode-remote5.png)
 
 When new packages are installed in the virtual environment, simply restart the kernel to refresh the environment.
 
 ## Using GPIO from Python
 
-We adapted the gpiozero library for the following devices
+The `gpiozero` library has been adapted for the following devices:
 
 - BPI-F3
 - MUSE Book
@@ -510,25 +412,35 @@ Let's take a 26-pin SpacemiT development board, SpacemiT MUSE-Pi, as an example 
 
 ### Device pin layout
 
-### MUSE Pi
+#### MUSE Pi
 
 ![alt text](static/MUSE-Pi-GPIO.png)
 
-### BPI-F3
+#### BPI-F3
 
 ![alt text](static/BPI-F3-GPIO.png)
 
-### MUSE BOOK
+#### MUSE BOOK
 
 ![alt text](static/MUSE-Book-GPIO.png)
 
-### MUSE Card
+#### MUSE Card
 
 ![alt text](static/MUSE-Card-GPIO.png)
 
 #### MUSE Pi Pro
 
-![](./static/MUSE-Pi-Pro-GPIO.png)
+![MUSE Pi Pro GPIO layout](./static/MUSE-Pi-Pro-GPIO.png)
+
+#### RV4B
+
+![RV4B GPIO layout](./static/RV4B-GPIO.png)
+
+Input pins can detect changes in signal level and are commonly used by gpiozero to read button states.
+
+Output pins can drive their output level to 0 V or 3.3 V and are commonly used by gpiozero to control LEDs.
+
+PWM pins can output pulse-width modulation signals, which gpiozero can use to create breathing LEDs and control servos.
 
 ### Install and Configure the Environment
 
@@ -546,7 +458,7 @@ sudo apt install python3-gpiozero
 pip install --index-url https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple gpiozero
 ```
 
-**Grant Device Permissions**
+#### Grant Device Permissions
 
 ```shell
 sudo chmod a+rw /dev/gpiochip0
@@ -631,9 +543,9 @@ Run it in an IDE like Thonny and the LED will blink repeatedly.
 
 LED methods include on(), off(), toggle(), and blink().
 
-**Tips**
+Tip:
 
-> The GPIO on the development board is usually weak in driving ability, so it is not recommended to connect power devices such as leds directly to the pins. It is recommended that you add a pull-up resistor greater than 10 KHZ to the GPIO pin, and then use a triode or MOS transistor to turn devices such as leds on and off.
+> GPIO pins on the development board have limited drive capability, so do not connect power-consuming devices such as LEDs directly to them. Add a pull-up resistor greater than 10 kOhm to the GPIO pin, then use a transistor or MOSFET to switch devices such as LEDs on and off.
 
 ### Code Explanation
 
