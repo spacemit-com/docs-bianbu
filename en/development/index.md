@@ -15,7 +15,7 @@ Below are some development guides:
 - [IDE](ide.md)
 - [Coredump](coredump.md)
 - [Perf Usage Note](perf.md)
-- [AMD R600 Graphics Card Usage Guide](r600.md)
+- [AMD Graphics Card Usage Guide](amd.md)
 - [read-only-rootfs-config Usage Instructions](system-restore.md)
 - [Package Hosting Service](dak.md)
 - [K3 NOR Second Boot Device Configuration Guide](second_boot_device_guide.md)
