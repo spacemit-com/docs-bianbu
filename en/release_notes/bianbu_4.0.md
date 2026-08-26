@@ -19,6 +19,25 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - Using this repository enables installation of packages released in subsequent V4.0.x versions, such as V4.0.1.
 - To download source packages, change `Types: deb` to `Types: deb deb-src`.
 
+## V4.0.6 Release Notes
+
+**Release Date:** 2026-08-26
+
+The corresponding **BSP version:** [V1.0.7](https://spacemit.com/community/document/info?lang=en&nodepath=software/SDK/buildroot/k3_buildroot/release_notes/bl-v1.0.y.md)
+
+### LXQt Desktop
+
+- Fixed an issue where quickly clicking the snapshot shutter button caused window maximization.
+- Fixed an issue where the backlight plugin would freeze when brightness control was unavailable.
+- Fixed issues in lxqt-session including reset failure, unreasonable delete button behavior, and abnormal scrolling behavior.
+- Fixed an issue where the network applet window could not be dragged after removing the title bar.
+- Updated Chinese translations for Ethernet and Wi-Fi settings.
+
+### Core Components
+
+- Fixed black screen issue after wlroots suspend.
+- Fixed an issue where the Ethernet connection list occasionally displayed duplicate wired network connections.
+
 ## V4.0.4 Release Notes
 
 **Release Date:** 2026-07-23
