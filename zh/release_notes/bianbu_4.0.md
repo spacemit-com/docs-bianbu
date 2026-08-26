@@ -19,6 +19,25 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - 使用此源即可安装到后续的 V4.0.x（如 V4.0.1）发布的包。
 - 如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
 
+## V4.0.6 更新说明
+
+发布日期：2026-8-26
+
+对应的**BSP**版本：[V1.0.7](https://spacemit.com/community/document/info?lang=zh&nodepath=software/SDK/buildroot/k3_buildroot/release_notes/bl-v1.0.y.md)
+
+### LXQt桌面主要更新
+
+- 修复snapshot快速点击快门导致窗口最大化的问题
+- 修复亮度控制不可用时，背光插件卡住问题
+- 修复lxqt-seeseion重置失败、删除按钮不合理以及滑动行为异常的问题
+- 修复网络applet移除标题栏后窗口无法拖动
+- 更新以太网和Wi-Fi设置的中文翻译
+
+### 基础组件主要更新
+
+- 修复wlroot休眠后黑屏问题
+- 修复了以太网连接列表中偶尔会异常多出多余有线网络连接的问题
+
 ## V4.0.4 更新说明
 
 发布日期：2026-7-23
