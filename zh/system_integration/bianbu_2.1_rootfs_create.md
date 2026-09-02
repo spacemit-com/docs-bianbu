@@ -66,7 +66,7 @@ Docker CE 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 2. 创建并启动容器
 
    ```shell
-   docker run --privileged -itd -v ~/bianbu-workspace:/mnt --name build-bianbu-rootfs harbor.spacemit.com/bianbu/bianbu:latest
+   docker run --privileged -itd -v ~/bianbu-workspace:/mnt --name build-bianbu-rootfs harbor.spacemit.com/bianbu/bianbu:2.3
    ```
 
 3. 进入容器
