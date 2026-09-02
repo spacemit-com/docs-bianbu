@@ -14,3 +14,6 @@ slug: /system_integration
 - [单应用 ROOTFS 制作](single_app_rootfs_create.md)
 - [固件制作](image.md)
 - [UEFI 固件与系统镜像制作指南](uefi_image.md)
+- [Bianbu 4.0 ROOTFS 制作](bianbu_4.0_rootfs_create.md)
+- [Bianbu 4.0 UEFI 镜像制作](bianbu_4.0_uefi_image_create.md)
+- [ISO 镜像制作指南](iso_image.md)（开发中，仅供参考）

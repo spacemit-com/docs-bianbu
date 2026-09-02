@@ -66,7 +66,7 @@ Docker CE installation can refer to [https://docs.docker.com/engine/install/](ht
 2. Create and start container
 
    ```shell
-   docker run --privileged -itd -v ~/bianbu-workspace:/mnt --name build-bianbu-rootfs harbor.spacemit.com/bianbu/bianbu:latest
+   docker run --privileged -itd -v ~/bianbu-workspace:/mnt --name build-bianbu-rootfs harbor.spacemit.com/bianbu/bianbu:2.3
    ```
 
 3. Enter container
