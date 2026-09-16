@@ -19,6 +19,21 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - 使用此源即可安装到后续的 V4.0.x（如 V4.0.1）发布的包。
 - 如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
 
+## V4.0.7 更新说明
+
+发布日期：2026-9-16
+
+对应的**BSP**版本：[V1.0.8](https://spacemit.com/community/document/info?lang=zh&nodepath=software/SDK/buildroot/k3_buildroot/release_notes/bl-v1.0.y.md)
+
+### LXQt桌面
+
+- 修复gnome-system-monitor瞬时虚高毛刺显示问题
+
+### Bianbu 基础组件
+- 修复UEFI固件OTA启动异常问题
+- 修复UEFI固件执行`update-grub`后无法正常启动问题
+- 修复adbd在总线重置后异常掉线问题
+
 ## V4.0.6 更新说明
 
 发布日期：2026-8-26
