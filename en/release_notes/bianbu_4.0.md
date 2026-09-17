@@ -19,6 +19,22 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - Using this repository enables installation of packages released in subsequent V4.0.x versions, such as V4.0.1.
 - To download source packages, change `Types: deb` to `Types: deb deb-src`.
 
+## V4.0.7 Release Notes
+
+**Release Date:** 2026-09-16
+
+The corresponding **BSP version:** [V1.0.8](https://spacemit.com/community/document/info?lang=en&nodepath=software/SDK/buildroot/k3_buildroot/release_notes/bl-v1.0.y.md)
+
+### LXQt Desktop
+
+- Fixed transient spikes in CPU usage displayed by GNOME System Monitor (gnome-system-monitor).
+
+### Bianbu Core Components
+
+- Fixed an issue where UEFI firmware OTA updates booted abnormally.
+- Fixed an issue where the system could not boot normally after the UEFI firmware ran `update-grub`.
+- Fixed an issue where `adbd` disconnected unexpectedly after a bus reset.
+
 ## V4.0.6 Release Notes
 
 **Release Date:** 2026-08-26
