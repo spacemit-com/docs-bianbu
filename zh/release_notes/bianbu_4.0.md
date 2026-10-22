@@ -19,6 +19,28 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - 使用此源即可安装到后续的 V4.0.x（如 V4.0.1）发布的包。
 - 如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
 
+## V4.0.8 更新说明
+
+发布日期：2026-10-22
+
+对应的**BSP**版本：[V1.0.10](https://spacemit.com/community/document/info?lang=zh&nodepath=software/SDK/buildroot/k3_buildroot/release_notes/bl-v1.0.y.md)
+
+### LXQt桌面
+
+- 新增桌面日程功能，并可通过任务栏时钟查看和管理日程
+- 优化插拔外接显示器时，显示设置自动刷新显示器列表
+- 修复任务栏时间每秒重复刷新导致的界面卡顿问题
+- 修复部分界面控件释放显卡资源不当可能造成显示异常的问题
+
+### Bianbu 基础组件
+
+- 新增 SpacemiT K3 启动早期 PowerVR GPU 预热功能
+- 新增 8852bs 无线网卡固件自动加载支持
+
+### AI
+- 增加llama新后端调用方式，保留旧后端调用方法，主流 LLM 模型在后端升级后，prefill 吞吐（PP128）平均提升约 13%，decode 吞吐（TG128）平均提升约 6%
+- file2md 提高文件转markdown的速度与质量
+
 ## V4.0.7 更新说明
 
 发布日期：2026-9-16
