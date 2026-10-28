@@ -22,6 +22,23 @@ Their relationship is as follows:
 
 However, even if all the above are supported in software/hardware, perf users still need to pay attention to:
 
+## How Events Map to Hardware
+
+The "Hardware event" and "Hardware cache event" in `perf list` are names pre-defined by Linux perf framework. On RISC-V, they are connected to the actual HPM hardware counters through the SBI PMU Extension. In the PMU Extension implementation of OpenSBI, this mapping is described in the node with `compatible = "riscv,pmu"`:
+
+- `riscv,event-to-mhpmevent`: event number of perf → selector written into the `mhpmevent` CSR
+- `riscv,event-to-mhpmcounters`: range of event numbers → which counters are allowed (bitmap)
+- `riscv,raw-event-to-mhpmcounters`: raw selector → which counters are allowed (bitmap)
+
+For detailed description of the format, please refer to the document [docs/pmu_support.md](https://github.com/riscv-software-src/opensbi/blob/master/docs/pmu_support.md) in OpenSBI sources.
+
+**These contents in Device Tree are parsed by OpenSBI, and cannot be noticed by Linux perf framework** (no relevant specifications are defined). Therefore:
+
+- not every hardware event listed in `perf list` corresponds to an actual HPM event;
+- the same selector may stand for different events on different models of core.
+
+The event tables are not the same across cores. The mappings of X60 and X100 are given in the following sections.
+
 ## Not Every Hardware Events in `perf list` is Available
 
 **Symptoms:**
@@ -76,7 +93,7 @@ $ perf list | grep Hardware
   node-stores                                        [Hardware cache event]
 ```
 
-But the counting results of some of them will be `<not counted>`. It could be caused by that these events are not supported in this hardware, or supoorted but just didn't occur during this counting:
+But the counting results of some of them will be `<not counted>`. It could be caused by that these events are not supported in this hardware, or supported but just didn't occur during this counting:
 
 ```shell
 $ perf stat -e cycles,branches,bus-cycles,ref-cycles ls
@@ -94,11 +111,30 @@ $ perf stat -e cycles,branches,bus-cycles,ref-cycles ls
        0.000000000 seconds sys
 ```
 
+> The above is how older versions of perf behave: they print all events pre-defined by the framework, whether the current platform supports them or not. Newer perf (since Linux 6.0) tries to open each event before listing it, and the events that fail to open are no longer listed.
+
 **Causes:**
 
-The "Hardware event" and "Hardware cache event" in `perf list` are names pre-defined by Linux perf framework. On RISC-V, they are connected to the actual HPM hardware counters through the SBI PMU Extension. In the PMU Extension implementation of OpenSBI, this mapping is described in the node with `compatible = "riscv,pmu"`.
+As described in the previous section, the mapping between events and hardware is defined in the Device Tree and parsed by OpenSBI, so the perf tool itself cannot know which events the firmware has defined. Therefore, not every hardware event listed in `perf list` corresponds to an actual HPM event.
 
-This is an example of Device Tree:
+**How to confirm and read the result:**
+
+To tell the cases apart, look at how the event is displayed in `perf stat`:
+
+| What you see | Meaning | What to do |
+|---|---|---|
+| The event is not in `perf list` | This perf version probed it, or the firmware defines no mapping for it | Specify it by raw selector (see "How to Use Raw Hardware Events"), or check the firmware version |
+| `<not supported>` | The event failed to open, SBI rejected it | Same as above |
+| `<not counted>` | The event opened successfully, but its enabled/running time is 0 | Usually because the events being counted exceed the available counters and this one got multiplexed out; count fewer events at the same time |
+| A percentage below 100% after the event name | The counter was multiplexed, and the count is scaled from the sampled time | The lower the percentage, the larger the variation |
+
+> `<not supported>` and `<not counted>` come from two different stages: the former is rejected when opened, the latter opened fine but nothing was counted.
+
+## X60
+
+### Events and Counters
+
+This is an example of Device Tree for X60:
 
 ```dts
 pmu {
@@ -156,11 +192,9 @@ pmu {
 };
 ```
 
-For detailed description of the format, please refer to the document [docs/pmu_support.md](https://github.com/riscv-software-src/opensbi/blob/master/docs/pmu_support.md) in OpenSBI sources.
+X60 has 16 programmable counters, `mhpmcounter3` to `mhpmcounter18`, and each of the events above may use any of them.
 
-**These contents in Device Tree are parsed by OpenSBI, and cannot be noticed by Linux perf framework** (no relevant specifications are defined). Therefore, not every hardware event listed in `perf list` corresponds to an actual HPM event.
-
-## Sampling (such as `perf record`) for `cycles` or `instructions` Event are Invalid on X60
+### Sampling (such as `perf record`) for `cycles` or `instructions` Event are Invalid on X60
 
 **Symptoms:**
 
@@ -191,6 +225,45 @@ Consider to use the following events as an alternative to `cycles` and `instruct
 - Software events such as `cpu-clock`, `task-clock`, etc.
 - Specific events supported on X60 hardware, such as U/S/M mode cycles, various intructions, etc. (Please refer to the hardware user manual for more details about these events. For how to use them in perf, please refer to the following section "How to Use Raw Hardware Events".)
 
+## X100
+
+### Events and Counters
+
+The Device Tree mapping of X100 differs from X60's in several places:
+
+- `cycles` and `instructions` are pinned to `mhpmcounter17` and `mhpmcounter18` respectively;
+- `stalled-cycles-frontend` / `stalled-cycles-backend` and the L1I prefetch events are gone;
+- L1D prefetch events and the DTLB access events are added.
+
+| perf event name | Event number | Selector | Counters used |
+|---|---|---|---|
+| cycles | 0x00001 | 0x1e | mhpmcounter17 |
+| instructions | 0x00002 | 0x1f | mhpmcounter18 |
+| branches | 0x00005 | 0x01 | shared |
+| branch-misses | 0x00006 | 0x02 | shared |
+| L1-dcache-loads | 0x10000 | 0x06 | shared |
+| L1-dcache-load-misses | 0x10001 | 0x05 | shared |
+| L1-dcache-stores | 0x10002 | 0x0a | shared |
+| L1-dcache-store-misses | 0x10003 | 0x09 | shared |
+| L1-dcache-prefetches | 0x10004 | 0x08 | shared |
+| L1-dcache-prefetch-misses | 0x10005 | 0x07 | shared |
+| L1-icache-loads | 0x10008 | 0x0c | shared |
+| L1-icache-load-misses | 0x10009 | 0x0b | shared |
+| dTLB-loads | 0x10018 | 0x16 | shared |
+| dTLB-stores | 0x1001a | 0x1a | shared |
+| dTLB-store-misses | 0x1001b | 0x19 | shared |
+| iTLB-load-misses | 0x10021 | 0x1b | shared |
+
+"shared" means any of `mhpmcounter3` to `mhpmcounter16`, 14 in total. So at most 14 general events can be counted at the same time on X100; `cycles` and `instructions` do not occupy any of these 14. Anything beyond that is multiplexed.
+
+The following events have no mapping defined on X100 and cannot be used by name: `bus-cycles`, `ref-cycles`, `cache-references`, `cache-misses` (LLC), `stalled-cycles-frontend`, `stalled-cycles-backend`, `L1-icache-prefetches`, `L1-icache-prefetch-misses`, `dTLB-load-misses`, `iTLB-loads`. Among them, `dTLB-load-misses` can be replaced by the raw selector `0x15` (see below).
+
+### Sampling
+
+X100 implements Sscofpmf, and `cycles` / `instructions` use ordinary programmable counters instead of `mcycle` / `minstret`, so `perf record`, `perf top` and other sampling functions work for these two events as well. This is different from X60.
+
+If the chip also carries cores of other models, the whole chip shares a single Device Tree, so the event table is still the X100 one and perf does not tell the event meanings apart by core. When accurate numbers are needed, it is recommended to pin the measured process to an X100 core with `taskset`; when counting across cores with `perf stat -A`, the results on non-X100 cores need to be treated separately.
+
 ## How to Use Raw Hardware Events
 
 For those events that are supported on hardware but not have pre-defined names in Linux perf framework (called "raw hardware event"), we can use `-e` option with the following two ways to specify them:
@@ -200,18 +273,25 @@ For those events that are supported on hardware but not have pre-defined names i
 
 ### By `rNNN` encoding
 
-`-e rNNN` can be used to specify a event by the code defined in hardware, where `NNN` is a hexadecimal number (excluding `0x`), and its format is determined by the Linux perf framework, hardware-defined code and related middleware.
+`-e rNNN` can be used to specify a event by the selector defined in hardware, where `NNN` is a hexadecimal number (excluding `0x`).
 
-For RISC-V platforms that support SBI PMU Extension, the meaning of each bit in `NNN` is:
+For RISC-V platforms that support SBI PMU Extension, `NNN` is the selector written into the `mhpmevent` CSR itself:
 
 ```plain
-  [63]      固定为 0，表示 raw type
-  [52:56]   固定为 4，表示 type 为 PERF_TYPE_RAW
-  [55:48]   未使用，全为 0 即可
-  [47:0]    对应的 mhpmevent CSR 值
+  [63:48]   must be 0
+  [47:0]    the corresponding mhpmevent selector
 ```
 
-For example, `r0400000000000008` represents an event with the `mhpmevent` value of 0x8.
+For example, to count the event whose selector is `0x15`, use `-e r15`.
+
+> Do not write it as `r0400000000000008`, which encodes `PERF_TYPE_RAW` into the high bits. The event type is passed by the perf tool through `attr.type`, and `config` should hold nothing but the selector; when the high bits are not 0, newer kernels reject the event outright, while older ones silently keep only the low 48 bits.
+
+Also, **not every selector can be used**: only the selectors allowed by the firmware in `riscv,raw-event-to-mhpmcounters` can be opened.
+
+- X60 allows `0x1` to `0xff` (the indexes actually valid in hardware are `0x1` to `0xbd`).
+- X100 allows the following 47: `01 02 05 06 07 08 09 0a 0b 0c 10 11 12 13 14 15 16 17 18 19 1a 1b 1e 1f 20 21 22 24 25 26 27 28 29 2b 2d 32 33 34 35 36 37 38 3a 3b 3c 3d 3f`.
+
+The `dTLB-load-misses` mentioned above is such a case: the Device Tree of X100 defines no name mapping for it, but the selector `0x15` is allowed, so it can be counted with `-e r15`.
 
 ### By Name
 
@@ -244,3 +324,5 @@ We can find these names in `perf list` (If the result of `perf list` is too long
 This name can be used directly in `-e` option. For example:
 
 ![perf pmu-events example](./static/perf-pmu-events-example.png)
+
+If the current SDK does not provide json files for the platform, only `rNNN` encoding can be used.
