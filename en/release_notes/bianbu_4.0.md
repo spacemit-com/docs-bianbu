@@ -19,6 +19,29 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - Using this repository enables installation of packages released in subsequent V4.0.x versions, such as V4.0.1.
 - To download source packages, change `Types: deb` to `Types: deb deb-src`.
 
+## V4.0.8 Release Notes
+
+**Release Date:** 2026-10-22
+
+The corresponding **BSP version:** [V1.0.10](https://spacemit.com/community/document/info?lang=en&nodepath=software/SDK/buildroot/k3_buildroot/release_notes/bl-v1.0.y.md)
+
+### LXQt Desktop
+
+- Added a desktop calendar for viewing and managing events from the taskbar clock.
+- Display settings now refresh the monitor list automatically when an external display is connected or disconnected.
+- Fixed UI stuttering caused by the taskbar clock redrawing every second.
+- Fixed possible display corruption caused by some UI widgets releasing GPU resources incorrectly.
+
+### Bianbu Core Components
+
+- Added PowerVR GPU warm-up during early boot on SpacemiT K3.
+- Added automatic firmware loading for the 8852bs wireless adapter.
+
+### AI
+
+- Added a new llama backend invocation method while keeping the legacy one. With the upgraded backend, mainstream LLMs show an average increase of about 13% in prefill throughput (PP128) and about 6% in decode throughput (TG128).
+- Improved the speed and output quality of file-to-Markdown conversion in file2md.
+
 ## V4.0.7 Release Notes
 
 **Release Date:** 2026-09-16
